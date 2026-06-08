@@ -228,12 +228,18 @@ const navItems = [
     let activeId = sectionIds[0];
     const offset = 120;
 
-    sectionIds.forEach((id) => {
-      const section = document.getElementById(id);
-      if (section && section.getBoundingClientRect().top <= offset) {
-        activeId = id;
-      }
-    });
+    const isAtBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 100;
+
+    if (isAtBottom) {
+      activeId = "lien-he";
+    } else {
+      sectionIds.forEach((id) => {
+        const section = document.getElementById(id);
+        if (section && section.getBoundingClientRect().top <= offset) {
+          activeId = id;
+        }
+      });
+    }
 
     setActiveNav(activeId);
   }
