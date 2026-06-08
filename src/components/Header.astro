@@ -3,10 +3,10 @@ const pathname = new URL(Astro.request.url).pathname;
 
 const navItems = [
   { label: 'Trang chủ', path: '/' },
-  { label: 'Giới thiệu', path: '/about/' },
-  { label: 'Dịch vụ', path: '/news/dich-vu/' },
-  { label: 'Tin tức', path: '/news/tin-tuc/' },
-  { label: 'Liên hệ', path: '/contact/' },
+  { label: 'Giới thiệu', path: '###' },
+  { label: 'Dịch vụ', path: '###' },
+  { label: 'Tin tức', path: '###' },
+  { label: 'Liên hệ', path: '###' },
 ];
 ---
 
@@ -16,7 +16,7 @@ const navItems = [
       
       <!-- Logo Left -->
       <a href="/" class="flex shrink-0 items-center gap-2">
-        <img src="/uploads/logo.png" alt="Xe du lịch Gia Huy" class="h-10 md:h-12 w-auto object-contain transition-transform duration-300 hover:scale-105" />
+        <img src="/uploads/logo.png" alt="Xe du lịch Gia Huy" class="h-7 md:h-9 w-auto object-contain transition-transform duration-300 hover:scale-105" />
       </a>
       
       <!-- Nav Middle (Desktop) -->
@@ -40,11 +40,7 @@ const navItems = [
       
       <!-- Actions Right (Desktop & Mobile) -->
       <div class="flex items-center gap-3">
-        <!-- Partner Seal (Desktop) -->
-        <div class="hidden sm:flex items-center gap-1.5 bg-slate-100/80 border border-slate-200/50 px-3 py-1 rounded-full text-[11px] text-slate-500 font-medium">
-          <img src="/uploads/iso.png" alt="ISO" class="h-4 w-4" />
-          <span>Đối tác <a href="https://kigi.vn/" target="_blank" class="text-brand font-semibold hover:underline">KIGI Group</a></span>
-        </div>
+
 
         <!-- Hotline CTA (Desktop) -->
         <a href="tel:0935373577" class="hidden md:inline-flex items-center gap-2 bg-brand-gradient hover:bg-brand-glow text-white text-sm font-semibold px-5 py-2.5 rounded-xl btn-glow shadow-premium transition-all duration-300">
@@ -67,7 +63,7 @@ const navItems = [
   <!-- Mobile Drawer Menu -->
   <div id="drawer-menu" class="fixed inset-y-0 right-0 z-50 w-72 max-w-sm bg-white p-6 shadow-2xl translate-x-full transition-transform duration-300 ease-in-out lg:hidden">
     <div class="flex items-center justify-between border-b border-slate-100 pb-4 mb-6">
-      <img src="/uploads/logo.png" alt="Xe du lịch Gia Huy" class="h-8 w-auto object-contain" />
+      <img src="/uploads/logo.png" alt="Xe du lịch Gia Huy" class="h-6 w-auto object-contain" />
       <button id="drawer-close-btn" class="p-2 text-slate-500 hover:text-brand transition-colors rounded-lg hover:bg-slate-50" aria-label="Đóng menu">
         <i class="fa-solid fa-xmark text-xl"></i>
       </button>
@@ -97,10 +93,7 @@ const navItems = [
         <span>Gọi đặt xe ngay</span>
       </a>
       
-      <div class="mt-6 flex items-center justify-center gap-2 text-xs text-slate-400">
-        <img src="/uploads/iso.png" alt="ISO" class="h-4 w-4" />
-        <span>Đối tác chính thức của KIGI Group</span>
-      </div>
+
     </div>
   </div>
 

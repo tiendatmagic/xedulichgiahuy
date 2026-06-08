@@ -271,11 +271,11 @@ const sliderImages = [
       </div>
 
       <!-- Tab Content Panels -->
-      <div class="relative min-h-[400px]">
+      <div class="w-full">
         {carTabs.map((tab, idx) => (
           <div 
             id={tab.id} 
-            class={`transition-all duration-500 absolute inset-x-0 top-0 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ${idx === 0 ? 'opacity-100 z-10 scale-100' : 'opacity-0 z-0 scale-95 pointer-events-none'}`}
+            class={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ${idx === 0 ? '' : 'hidden'}`}
           >
             <!-- Card items -->
             <div class="md:col-span-2 lg:col-span-3 mb-4">
@@ -435,19 +435,14 @@ const sliderImages = [
       btn.classList.remove('text-slate-600', 'hover:text-brand');
 
       // Hide all panels, show target panel
-      const panels = document.querySelectorAll('[data-tab-trigger]');
-      // Wait, we need to select all target tab content divs.
-      // We mapped IDs matching tab.id: xe-4-7, xe-16, xe-29, xe-35-45.
       const allPanels = ['xe-4-7', 'xe-16', 'xe-29', 'xe-35-45'];
       allPanels.forEach(id => {
         const panel = document.getElementById(id);
         if (panel) {
           if (id === targetId) {
-            panel.classList.remove('opacity-0', 'z-0', 'scale-95', 'pointer-events-none');
-            panel.classList.add('opacity-100', 'z-10', 'scale-100');
+            panel.classList.remove('hidden');
           } else {
-            panel.classList.remove('opacity-100', 'z-10', 'scale-100');
-            panel.classList.add('opacity-0', 'z-0', 'scale-95', 'pointer-events-none');
+            panel.classList.add('hidden');
           }
         }
       });
