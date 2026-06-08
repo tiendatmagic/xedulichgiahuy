@@ -7,13 +7,13 @@
     scroll-behavior: smooth;
   }
   body {
-    @apply font-sans bg-slate-50 text-slate-800 antialiased overflow-x-hidden text-[15px] md:text-[16px] leading-relaxed;
+    @apply font-sans bg-slate-50 text-slate-800 antialiased overflow-x-hidden text-[16px] md:text-[17px] leading-relaxed;
   }
   .text-xs {
-    font-size: 13.5px !important;
+    font-size: 14.5px !important;
   }
   .text-sm {
-    font-size: 15px !important;
+    font-size: 16px !important;
   }
 }
 

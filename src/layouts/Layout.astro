@@ -60,26 +60,27 @@ const {
     <Footer />
     
     <!-- Floating Widgets & Back to Top on the bottom right -->
-    <div class="fixed bottom-6 right-6 z-50 flex flex-col gap-3 items-center">
+    <div class="fixed bottom-6 right-6 z-50 flex flex-col gap-3.5 items-center">
       <!-- Back to Top Button -->
-      <button id="back-to-top" class="hidden size-12 items-center justify-center rounded-full bg-white border border-slate-200 text-slate-600 hover:text-brand hover:border-brand shadow-premium transition-all duration-300 hover:scale-105">
+      <button id="back-to-top" class="hidden size-12 items-center justify-center rounded-full bg-white border border-slate-200 text-slate-600 hover:text-brand hover:border-brand shadow-premium transition-all duration-300 hover:scale-110" title="Cuộn lên đầu">
         <i class="fa-solid fa-chevron-up"></i>
       </button>
 
       <!-- Zalo Chat -->
-      <a href="https://zalo.me/0935373577" target="_blank" rel="noopener noreferrer" class="flex size-12 items-center justify-center bg-cyan-500 text-cyan-600 font-extrabold text-[10px] rounded-full shadow-lg hover:scale-105 hover:bg-cyan-600 transition-all duration-300" title="Nhắn tin Zalo">
-        <span class="flex h-9 w-9 items-center justify-center rounded-full bg-white">
-          Zalo
-        </span>
+      <a href="https://zalo.me/0935373577" target="_blank" rel="noopener noreferrer" class="flex size-12 items-center justify-center bg-[#0068FF] text-white rounded-full shadow-lg hover:scale-110 hover:bg-[#0056D6] transition-all duration-300" title="Nhắn tin Zalo">
+        <svg viewBox="0 0 24 24" class="w-7 h-7" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2C6.47715 2 2 6.47715 2 12C2 14.7255 3.09032 17.1962 4.85857 19H4.85C5.12076 19 5.38578 19.1124 5.5746 19.3093L7.7554 21.5834C8.15049 21.9954 8.82367 21.9056 9.10271 21.4038L10.3787 19.1089C10.5187 18.857 10.7818 18.7 11.069 18.7H12C17.5228 18.7 22 14.2228 22 8.7C22 3.17715 17.5228 2 12 2Z" fill="currentColor"/>
+          <path d="M9 8H15L10 14H15V16H8V14L13 8H9V8Z" fill="#0068FF"/>
+        </svg>
       </a>
       
       <!-- SMS -->
-      <a href="sms:0935373577" class="flex size-12 items-center justify-center bg-emerald-500 text-white rounded-full shadow-lg hover:scale-105 hover:bg-emerald-600 transition-all duration-300" title="Gửi SMS">
+      <a href="sms:0935373577" class="flex size-12 items-center justify-center bg-emerald-500 text-white rounded-full shadow-lg hover:scale-110 hover:bg-emerald-600 transition-all duration-300" title="Gửi SMS">
         <i class="fa-solid fa-envelope text-lg"></i>
       </a>
 
       <!-- Hotline Call -->
-      <a href="tel:0935373577" class="relative flex size-12 items-center justify-center bg-brand-gradient hover:bg-brand-glow text-white rounded-full shadow-glow hover:scale-105 transition-all duration-300" title="Gọi hotline: 0935.37.3577">
+      <a href="tel:0935373577" class="relative flex size-12 items-center justify-center bg-brand-gradient hover:bg-brand-glow text-white rounded-full shadow-glow hover:scale-110 transition-all duration-300" title="Gọi hotline: 0935.37.3577">
         <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand-cyan opacity-40"></span>
         <i class="fa-solid fa-phone text-lg animate-bounce"></i>
       </a>
