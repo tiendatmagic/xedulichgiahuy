@@ -1,0 +1,130 @@
+---
+---
+
+<div class="glass rounded-3xl border border-slate-200/50 p-6 md:p-8 shadow-premium relative overflow-hidden">
+  
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+    
+    <!-- Left form - 5 cols -->
+    <div class="lg:col-span-5 flex flex-col justify-between">
+      <div>
+        <span class="inline-flex items-center gap-1.5 rounded-full border border-brand/20 bg-brand/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-brand">
+          <i class="fa-solid fa-paper-plane"></i> Gửi tin nhắn
+        </span>
+        <h3 class="text-2xl font-extrabold text-slate-900 mt-3 mb-2">Liên hệ với chúng tôi</h3>
+        <p class="text-xs text-slate-500 mb-6 leading-relaxed">
+          Quý khách cần tư vấn thuê xe du lịch, đặt xe hoặc đóng góp ý kiến phản hồi? Vui lòng điền thông tin bên dưới, chúng tôi sẽ liên hệ lại ngay lập tức.
+        </p>
+      </div>
+
+      <form id="contact-form" class="space-y-4">
+        <div>
+          <input 
+            type="text" 
+            id="fullname" 
+            name="fullname" 
+            required 
+            placeholder="Họ và tên *" 
+            class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white/50 text-slate-800 text-sm focus:outline-none focus:border-brand focus:ring-2 focus:ring-brand/10 transition-all duration-300 placeholder-slate-400"
+          />
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <input 
+              type="tel" 
+              id="phone" 
+              name="phone" 
+              required 
+              placeholder="Số điện thoại *" 
+              class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white/50 text-slate-800 text-sm focus:outline-none focus:border-brand focus:ring-2 focus:ring-brand/10 transition-all duration-300 placeholder-slate-400"
+            />
+          </div>
+          <div>
+            <input 
+              type="email" 
+              id="email" 
+              name="email" 
+              required 
+              placeholder="Địa chỉ Email *" 
+              class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white/50 text-slate-800 text-sm focus:outline-none focus:border-brand focus:ring-2 focus:ring-brand/10 transition-all duration-300 placeholder-slate-400"
+            />
+          </div>
+        </div>
+        <div>
+          <input 
+            type="text" 
+            id="subject" 
+            name="subject" 
+            placeholder="Tiêu đề phản hồi" 
+            class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white/50 text-slate-800 text-sm focus:outline-none focus:border-brand focus:ring-2 focus:ring-brand/10 transition-all duration-300 placeholder-slate-400"
+          />
+        </div>
+        <div>
+          <textarea 
+            id="message" 
+            name="message" 
+            rows="4" 
+            required 
+            placeholder="Nội dung tin nhắn của bạn *" 
+            class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white/50 text-slate-800 text-sm focus:outline-none focus:border-brand focus:ring-2 focus:ring-brand/10 transition-all duration-300 placeholder-slate-400 resize-none"
+          ></textarea>
+        </div>
+
+        <button 
+          type="submit" 
+          class="w-full inline-flex items-center justify-center gap-2 bg-brand-gradient hover:bg-brand-glow text-white text-sm font-semibold py-3.5 rounded-xl btn-glow shadow-premium transition-all duration-300"
+        >
+          <i class="fa-solid fa-paper-plane-top"></i>
+          <span>Gửi yêu cầu đặt xe</span>
+        </button>
+      </form>
+    </div>
+
+    <!-- Right Map - 7 cols -->
+    <div class="lg:col-span-7 h-80 lg:h-auto min-h-[350px] relative rounded-2xl overflow-hidden border border-slate-200/50 shadow-inner">
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d62382.53115499281!2d109.15290022956302!3d12.254491519295026!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3170677ba8ff4a0f%3A0xeb2c4cd7d4356d2d!2zVHAuIE5oYSBUcmFuZywgS2jDoW5oIEjDsmEgNjUwMDAwLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2sus!4v1525892747152" 
+        class="absolute inset-0 w-full h-full"
+        style="border:0;" 
+        allowfullscreen="" 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade"
+      ></iframe>
+    </div>
+
+  </div>
+
+  <!-- Success Toast Alert -->
+  <div id="toast-success" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 pointer-events-none transition-all duration-500 bg-slate-900 text-white rounded-2xl p-4 shadow-2xl flex items-center gap-3 border border-slate-800">
+    <div class="size-8 rounded-full bg-emerald-500 flex items-center justify-center text-white shrink-0">
+      <i class="fa-solid fa-check"></i>
+    </div>
+    <div>
+      <p class="font-bold text-sm">Gửi tin nhắn thành công!</p>
+      <p class="text-[11px] text-slate-400">Gia Huy sẽ liên hệ lại ngay sau vài phút.</p>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement;
+  const toast = document.getElementById('toast-success');
+
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    
+    // Simulate sending message
+    if (toast) {
+      toast.classList.remove('translate-y-20', 'opacity-0', 'pointer-events-none');
+      toast.classList.add('translate-y-0', 'opacity-100');
+      
+      form.reset();
+
+      setTimeout(() => {
+        toast.classList.remove('translate-y-0', 'opacity-100');
+        toast.classList.add('translate-y-20', 'opacity-0', 'pointer-events-none');
+      }, 4000);
+    }
+  });
+</script>

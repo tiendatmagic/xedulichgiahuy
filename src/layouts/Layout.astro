@@ -1,23 +1,113 @@
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
-</html>
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
+interface Props {
+  title?: string;
+  description?: string;
+  keywords?: string;
+}
+
+const { 
+  title = "Cho thuê xe du lịch Nha Trang - Nhà Xe Gia Huy Báo giá mới nhất", 
+  description = "Cho thuê xe du lịch Nha Trang, Gọi ☎️ 0935.37.3577 ✅ Cam kết giá tốt nhất ⭐chúng tôi có xe ôtô 4,7,16,29,35 đến 45 chỗ ⭐️ phục vụ tất cả các nhu cầu ✅ Đội ngũ lái xe kinh nghiệm, phục vụ tận tình vui vẻ",
+  keywords = "xe du lich nha trang, thue xe du lich nha trang, cho thue xe nha trang, thue xe du lich gia huy"
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="vi" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="/uploads/iconkigi.png" />
+    <meta name="generator" content={Astro.generator} />
+    
+    <!-- SEO Meta Tags -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
+    <meta name="robots" content="index, follow" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content="https://xedulichgiahuy.com/" />
+    <meta property="og:image" content="/uploads/logo.png" />
+    <meta property="og:site_name" content="Xe du lịch Gia Huy Nha Trang" />
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Chakra+Petch:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  </head>
+  <body class="flex flex-col min-h-screen text-slate-800 bg-slate-50 font-sans">
+    
+    <!-- Sticky Glassmorphic Header -->
+    <Header />
+    
+    <!-- Main Content -->
+    <main class="flex-grow pt-16 md:pt-20">
+      <slot />
+    </main>
+    
+    <!-- Footer Section -->
+    <Footer />
+    
+    <!-- Floating Widgets: Phone, Zalo, SMS -->
+    <div class="fixed bottom-6 left-6 z-50 flex flex-col gap-3">
+      <!-- Hotline Call -->
+      <a href="tel:0935373577" class="group flex items-center gap-3 bg-brand-gradient hover:bg-brand-glow text-white font-bold p-3 rounded-full md:pr-6 shadow-glow hover:scale-105 transition-all duration-300">
+        <span class="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white text-brand">
+          <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand-cyan opacity-40"></span>
+          <i class="fa-solid fa-phone text-lg animate-bounce"></i>
+        </span>
+        <span class="hidden md:inline text-sm tracking-wider uppercase font-semibold">0935.37.3577</span>
+      </a>
+      
+      <!-- Zalo Chat -->
+      <a href="https://zalo.me/0935373577" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 bg-cyan-500 text-white font-bold p-3 rounded-full md:pr-6 shadow-lg hover:scale-105 hover:bg-cyan-600 transition-all duration-300">
+        <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white text-cyan-600 font-extrabold text-xs">
+          Zalo
+        </span>
+        <span class="hidden md:inline text-sm tracking-wider font-semibold">Nhắn tin Zalo</span>
+      </a>
+      
+      <!-- SMS -->
+      <a href="sms:0935373577" class="flex items-center gap-3 bg-emerald-500 text-white font-bold p-3 rounded-full md:pr-6 shadow-lg hover:scale-105 hover:bg-emerald-600 transition-all duration-300">
+        <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white text-emerald-600">
+          <i class="fa-solid fa-envelope"></i>
+        </span>
+        <span class="hidden md:inline text-sm tracking-wider font-semibold">Gửi SMS</span>
+      </a>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="fixed bottom-6 right-6 z-50 hidden size-11 items-center justify-center rounded-full bg-white border border-slate-200 text-slate-600 hover:text-brand hover:border-brand shadow-premium transition-all duration-300 hover:scale-105">
+      <i class="fa-solid fa-chevron-up"></i>
+    </button>
+
+    <script>
+      const backToTopBtn = document.getElementById('back-to-top');
+      if (backToTopBtn) {
+        window.addEventListener('scroll', () => {
+          if (window.scrollY > 400) {
+            backToTopBtn.classList.remove('hidden');
+            backToTopBtn.classList.add('flex');
+          } else {
+            backToTopBtn.classList.remove('flex');
+            backToTopBtn.classList.add('hidden');
+          }
+        });
+        backToTopBtn.addEventListener('click', () => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
+    </script>
+  </body>
+</html>

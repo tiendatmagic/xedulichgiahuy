@@ -1,0 +1,81 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ContactForm from '../components/ContactForm.astro';
+---
+
+<Layout 
+  title="Liên hệ đặt xe - Xe Du Lịch Gia Huy Nha Trang"
+  description="Thông tin liên hệ, số điện thoại, địa chỉ và biểu mẫu gửi phản hồi của Xe du lịch Gia Huy Nha Trang. Đặt xe 4, 7, 16, 29, 35, 45 chỗ nhanh chóng."
+>
+  <!-- Page Header Banner -->
+  <section class="relative bg-slate-900 py-16 sm:py-24 text-center overflow-hidden">
+    <div class="absolute inset-0 bg-cover bg-center opacity-30" style="background-image: url('/uploads/slider/xe-du-lich-nha-trang_1.jpg')"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-slate-900/60 to-slate-900/90 z-0"></div>
+    
+    <div class="relative z-10 mx-auto max-w-7xl px-4 flex flex-col items-center">
+      <h1 class="text-white text-3xl sm:text-5xl font-extrabold tracking-tight">Liên Hệ</h1>
+      <p class="text-slate-300 text-xs sm:text-base max-w-lg mt-3 leading-relaxed">
+        Gửi phản hồi hoặc gọi hotline để đặt xe nhanh chóng 24/7.
+      </p>
+    </div>
+  </section>
+
+  <!-- Content Section -->
+  <section class="py-12 bg-white relative">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      
+      <!-- Breadcrumb nav -->
+      <nav class="flex items-center gap-2 text-xs text-slate-400 font-medium mb-8">
+        <a href="/" class="hover:text-brand transition-colors"><i class="fa-solid fa-house"></i> Trang chủ</a>
+        <i class="fa-solid fa-chevron-right text-[10px]"></i>
+        <span class="text-slate-600 font-semibold">Liên hệ</span>
+      </nav>
+
+      <!-- Contact Info Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+        <!-- Card 1 -->
+        <div class="glass border border-slate-200/60 rounded-3xl p-6 shadow-sm hover:shadow-premium transition-all duration-300 flex items-start gap-4">
+          <span class="grid size-12 shrink-0 place-items-center rounded-2xl bg-brand-gradient text-white shadow-glow text-lg">
+            <i class="fa-solid fa-location-dot"></i>
+          </span>
+          <div>
+            <h4 class="font-extrabold text-slate-900 text-sm tracking-wide uppercase">Địa chỉ</h4>
+            <p class="text-xs text-slate-500 mt-2 leading-relaxed">Vĩnh Lương, Nha Trang, Khánh Hòa</p>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="glass border border-slate-200/60 rounded-3xl p-6 shadow-sm hover:shadow-premium transition-all duration-300 flex items-start gap-4">
+          <span class="grid size-12 shrink-0 place-items-center rounded-2xl bg-cyan-500 text-white shadow-lg text-lg">
+            <i class="fa-solid fa-phone"></i>
+          </span>
+          <div>
+            <h4 class="font-extrabold text-slate-900 text-sm tracking-wide uppercase">Điện thoại</h4>
+            <p class="text-xs text-slate-500 mt-2 leading-relaxed flex flex-col gap-1">
+              <a href="tel:0935373577" class="hover:text-brand transition-colors font-bold text-sm">0935.373.577 (Đặt xe)</a>
+              <a href="tel:0987402160" class="hover:text-brand transition-colors">098.740.2160 (Hỗ trợ)</a>
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="glass border border-slate-200/60 rounded-3xl p-6 shadow-sm hover:shadow-premium transition-all duration-300 flex items-start gap-4">
+          <span class="grid size-12 shrink-0 place-items-center rounded-2xl bg-emerald-500 text-white shadow-lg text-lg">
+            <i class="fa-solid fa-envelope"></i>
+          </span>
+          <div>
+            <h4 class="font-extrabold text-slate-900 text-sm tracking-wide uppercase">Email & Web</h4>
+            <p class="text-xs text-slate-500 mt-2 leading-relaxed flex flex-col gap-0.5">
+              <span>xedulichgiahuy79@gmail.com</span>
+              <a href="https://xedulichgiahuy.com" class="hover:text-brand transition-colors">www.xedulichgiahuy.com</a>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact Form & Maps Embed Component -->
+      <ContactForm />
+
+    </div>
+  </section>
+</Layout>

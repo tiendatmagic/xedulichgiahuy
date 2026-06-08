@@ -1,11 +1,457 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
+import postsData from '../data/posts.json';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+// Get featured tours (du-lich)
+const featuredTours = postsData.filter(post => post.category === 'du-lich').slice(0, 4);
+
+// Car category data mapping to downloaded photos
+const carTabs = [
+  {
+    id: 'xe-4-7',
+    label: 'Xe 4 - 7 Chỗ',
+    description: 'Dòng xe gia đình nhỏ gọn, đời mới tiện nghi: Toyota Vios, Honda City, Innova, Xpander...',
+    cars: [
+      { name: 'Toyota Fortuner 7 chỗ', image: '/uploads/photos/thumbs/photos_300x300-45-b2e9a0c8014582f1440804d18cb85a20.jpg' },
+      { name: 'Mitsubishi Xpander 7 chỗ', image: '/uploads/photos/thumbs/photos_300x300-43-456c4b99e0c2a163588362ec5e8bb37c.jpg' },
+      { name: 'Toyota Innova 7 chỗ', image: '/uploads/photos/thumbs/photos_300x300-44-f30da1a7c0bb3ea16269264144efb6b1.jpg' },
+      { name: 'Hyundai Accent 4 chỗ', image: '/uploads/photos/thumbs/photos_300x300-48-e541980b9be87bde52720294c545811a.jpg' },
+      { name: 'Toyota Vios 4 chỗ', image: '/uploads/photos/thumbs/photos_300x300-47-d975a13d13fbf69e21189496edc25480.jpg' },
+      { name: 'Kia Cerato 4 chỗ', image: '/uploads/photos/thumbs/photos_300x300-49-abb51978c78cf2f58323365554b2ba88.jpg' }
+    ]
+  },
+  {
+    id: 'xe-16',
+    label: 'Xe 16 Chỗ',
+    description: 'Dòng xe thông dụng nhất cho khách đoàn vừa: Ford Transit, Hyundai Solati sạch sẽ, êm ái.',
+    cars: [
+      { name: 'Ford Transit 16 chỗ', image: '/uploads/photos/thumbs/photos_300x300-34-472658c83315e469342b0c760488a6ba.jpg' },
+      { name: 'Hyundai Solati 16 chỗ', image: '/uploads/photos/thumbs/photos_300x300-35-1628f348053aacb9bfbaa88a58b35ce5.jpg' },
+      { name: 'Ford Transit Mid', image: '/uploads/photos/thumbs/photos_300x300-36-6fa546343b2342e4f5f4eceb700e8b56.jpg' },
+      { name: 'Ford Transit Luxury', image: '/uploads/photos/thumbs/photos_300x300-37-5df52f9b7a9762ffe2c366e6af660ae4.jpg' },
+      { name: 'Ford Transit Limousine', image: '/uploads/photos/thumbs/photos_300x300-38-da88cd3569a6f80efaad879eb5b54e2d.jpg' },
+      { name: 'Hyundai Solati Luxury', image: '/uploads/photos/thumbs/photos_300x300-39-5c3f63dd0a6c0ecd2452aa1061e51456.jpg' }
+    ]
+  },
+  {
+    id: 'xe-29',
+    label: 'Xe 29 Chỗ',
+    description: 'Dòng xe tầm trung, thích hợp đi tour liên tỉnh, du lịch dài ngày: Thaco Town, Isuzu Samco...',
+    cars: [
+      { name: 'Thaco Town 29 chỗ', image: '/uploads/photos/thumbs/photos_300x300-64-0c584f1155c7801b2c3347370c9b569d.jpg' },
+      { name: 'Isuzu Samco 29 chỗ', image: '/uploads/photos/thumbs/photos_300x300-65-26ab11d9799809c18578958803578445.jpg' },
+      { name: 'Thaco Town Deluxe', image: '/uploads/photos/thumbs/photos_300x300-66-9b3a10d7e66356e574e7a38ba00918d8.jpg' },
+      { name: 'Isuzu Samco Felix', image: '/uploads/photos/thumbs/photos_300x300-67-4cd485dd3603caa984c7c9206f0fe909.jpg' },
+      { name: 'Thaco Meadow 29 chỗ', image: '/uploads/photos/thumbs/photos_300x300-68-94a6d63335e5128afcce23f1ee912d51.jpg' },
+      { name: 'Isuzu Samco Bầu Hơi', image: '/uploads/photos/thumbs/photos_300x300-69-516f356e5f7d20204ce31537aa78b16f.jpg' }
+    ]
+  },
+  {
+    id: 'xe-35-45',
+    label: 'Xe 35 - 45 Chỗ',
+    description: 'Dòng xe cỡ lớn cao cấp nhất, khoang xe rộng rãi, giường nằm/bầu hơi: Hyundai Universe...',
+    cars: [
+      { name: 'Hyundai Universe 45 chỗ', image: '/uploads/photos/thumbs/photos_300x300-72-547957875627f93d2defe0f29fd1d75b.jpg' },
+      { name: 'Thaco Universe 45 chỗ', image: '/uploads/photos/thumbs/photos_300x300-73-e1e92381f8cdf6119286b6d42b6ac219.jpg' },
+      { name: 'Hyundai Universe Prime', image: '/uploads/photos/thumbs/photos_300x300-74-4a2d2dae466973e57dbd89fb8782337b.jpg' },
+      { name: 'Thaco Bluesky 120S 47 chỗ', image: '/uploads/photos/thumbs/photos_300x300-75-a47a0e6d215577ca386e4b9e0137d12b.jpg' },
+      { name: 'Hyundai Universe Luxury', image: '/uploads/photos/thumbs/photos_300x300-76-48f31ebac6c5629598da39fa60f0b88d.jpg' },
+      { name: 'Universe Express 45 chỗ', image: '/uploads/photos/thumbs/photos_300x300-77-d3d0dbd2c51c2903c36cacbff375ad4d.jpg' }
+    ]
+  }
+];
+
+const partners = [
+  { name: 'Việt Travel', logo: '/uploads/slider/vietravel.png' },
+  { name: 'Kiều Gia Media', logo: '/uploads/slider/kieugiamedia.jpg', url: 'https://kieugiamedia.com' },
+  { name: 'Kiều Gia Travel', logo: '/uploads/slider/kieugiatravel.jpg', url: 'https://kieugiatravel.com' },
+  { name: 'Kiều Gia Land', logo: '/uploads/slider/kieugiatland.jpg', url: 'https://kieugialand.com' },
+  { name: 'Vinpearl Villas', logo: '/uploads/slider/golfland.vinpearlvillas.com_.png' }
+];
+
+const sliderImages = [
+  '/uploads/slider/xe-du-lich-nha-trang_5.jpg',
+  '/uploads/slider/xe-du-lich-nha-trang.jpg',
+  '/uploads/slider/xe-du-lich-nha-trang_2.jpg',
+  '/uploads/slider/xe-du-lich-nha-trang_3.jpg',
+  '/uploads/slider/xe-du-lich-nha-trang_1.jpg'
+];
 ---
 
 <Layout>
-	<Welcome />
+  <!-- Hero Slideshow Section -->
+  <section class="relative h-[65vh] md:h-[80vh] w-full overflow-hidden bg-slate-900">
+    <div id="hero-slider" class="absolute inset-0 w-full h-full">
+      {sliderImages.map((src, index) => (
+        <div class={`absolute inset-0 w-full h-full bg-cover bg-center transition-opacity duration-1000 ease-in-out ${index === 0 ? 'opacity-100 z-10' : 'opacity-0 z-0'}`} style={`background-image: linear-gradient(to bottom, rgba(15,23,42,0.3), rgba(15,23,42,0.7)), url(${src})`}></div>
+      ))}
+    </div>
+
+    <!-- Hero Content overlay -->
+    <div class="relative z-20 flex h-full items-center justify-center text-center px-4">
+      <div class="max-w-4xl flex flex-col items-center">
+        <span class="inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-white/10 backdrop-blur-md px-3.5 py-1.5 text-xs font-semibold tracking-wide text-brand-cyan mb-4 animate-fade-in shadow-premium">
+          <i class="fa-solid fa-sparkles text-brand-yellow"></i> NHÀ XE GIA HUY NHA TRANG
+        </span>
+        <h1 class="text-white text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-none mb-6 animate-slide-up">
+          Dịch Vụ Cho Thuê Xe Du Lịch <br />
+          <span class="text-gradient">Chuyên Nghiệp & Giá Tốt Nhất</span>
+        </h1>
+        <p class="text-slate-300 text-sm sm:text-lg max-w-2xl mb-8 leading-relaxed">
+          Chúng tôi cung cấp các dòng xe đời mới từ 4, 7, 16, 29, 35 đến 45 chỗ phục vụ tham quan du lịch, đón tiễn sân bay Cam Ranh, tour liên tỉnh.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+          <a href="tel:0935373577" class="inline-flex items-center justify-center gap-2 bg-brand-gradient hover:bg-brand-glow text-white text-base font-bold px-8 py-3.5 rounded-2xl shadow-glow hover:scale-105 transition-all duration-300">
+            <i class="fa-solid fa-phone"></i> Gọi Đặt Xe Ngay
+          </a>
+          <a href="#car-rates" class="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 border border-white/20 text-white text-base font-semibold px-8 py-3.5 rounded-2xl backdrop-blur-md hover:scale-105 transition-all duration-300">
+            Xem Bảng Giá Xe
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide Indicators -->
+    <div class="absolute bottom-6 left-0 right-0 z-20 flex justify-center gap-2">
+      {sliderImages.map((_, index) => (
+        <button class={`size-2.5 rounded-full border border-white/30 transition-all duration-300 ${index === 0 ? 'bg-white w-6' : 'bg-white/40'}`} data-slide={index}></button>
+      ))}
+    </div>
+  </section>
+
+  <!-- Quick Intro & Banner -->
+  <section class="py-16 md:py-24 bg-white relative overflow-hidden">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <!-- Text col - 6 cols -->
+        <div class="lg:col-span-6">
+          <span class="inline-flex items-center gap-1.5 rounded-full border border-brand/20 bg-brand/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-brand">
+            <i class="fa-solid fa-circle-info"></i> Giới thiệu nhà xe
+          </span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mt-3 mb-6">
+            Xe Du Lịch Gia Huy Nha Trang
+          </h2>
+          <div class="text-slate-600 text-sm md:text-base leading-relaxed space-y-4">
+            <p>
+              Nhà xe Gia Huy chuyên cho thuê xe ôtô từ 4, 7, 16, 29, 35 đến 45 chỗ đời mới, phục vụ tất cả các nhu cầu di chuyển của quý khách tại thành phố biển Nha Trang, tỉnh Khánh Hòa và các tỉnh miền Trung, Tây Nguyên.
+            </p>
+            <p class="font-semibold text-brand">
+              Cam kết mang đến dịch vụ tốt nhất cùng mức giá thuê xe cạnh tranh, hấp dẫn nhất thị trường!
+            </p>
+            <p>
+              Đội ngũ lái xe của Gia Huy đều là những tài xế có nhiều năm kinh nghiệm chạy xe du lịch đường dài, thái độ phục vụ ân cần, nhiệt tình và chu đáo, bảo đảm quý khách sẽ có một chuyến đi an toàn, thoải mái nhất.
+            </p>
+          </div>
+          <div class="mt-8 flex flex-wrap gap-4 items-center">
+            <div class="bg-slate-50 border border-slate-200/60 rounded-2xl px-5 py-3 shadow-sm">
+              <p class="text-xs text-slate-400">Đặt xe nhanh (Hotline 24/7)</p>
+              <a href="tel:0935373577" class="text-xl font-bold text-brand hover:underline">0935.37.3577</a>
+            </div>
+            <div class="bg-slate-50 border border-slate-200/60 rounded-2xl px-5 py-3 shadow-sm">
+              <p class="text-xs text-slate-400">Địa chỉ văn phòng</p>
+              <p class="text-sm font-semibold text-slate-800">Vĩnh Lương, Nha Trang, Khánh Hòa</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Banner image col - 6 cols -->
+        <div class="lg:col-span-6 relative">
+          <!-- Colorful backdrop decoration -->
+          <div class="absolute -inset-4 bg-brand-gradient opacity-10 blur-2xl rounded-3xl -z-10"></div>
+          <div class="rounded-3xl border border-slate-200/60 overflow-hidden shadow-premium group">
+            <img 
+              src="/uploads/banners/xe-du-lich-nha-trang.jpg" 
+              alt="Dịch vụ xe du lịch Nha Trang Gia Huy" 
+              class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Core Strengths Section -->
+  <section class="py-16 md:py-24 bg-slate-50 relative overflow-hidden">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="inline-flex items-center gap-1.5 rounded-full border border-brand/20 bg-brand/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-brand">
+          <i class="fa-solid fa-star text-brand-yellow animate-spin [animation-duration:6s]"></i> Tại sao nên chọn chúng tôi
+        </span>
+        <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight mt-3 mb-4">Cam Kết Chất Lượng Vượt Trội</h2>
+        <p class="text-slate-500 text-sm md:text-base leading-relaxed">
+          Chúng tôi xây dựng uy tín dựa trên sự hài lòng và trải nghiệm di chuyển an toàn của mọi khách hàng.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- Card 1 -->
+        <div class="glass rounded-3xl border border-slate-200/60 p-8 shadow-premium hover:shadow-glow transition-all duration-300 hover:-translate-y-1 group relative">
+          <div class="absolute top-0 right-0 h-24 w-24 rounded-bl-full bg-brand/5 transition-transform duration-500 group-hover:scale-150 -z-10"></div>
+          <span class="grid size-12 place-items-center rounded-2xl bg-brand-gradient text-white shadow-glow mb-6 text-xl">
+            <i class="fa-solid fa-bolt"></i>
+          </span>
+          <h3 class="text-lg font-bold text-slate-900 mb-3">Nhanh chóng</h3>
+          <p class="text-xs text-slate-500 mb-5 leading-relaxed">
+            Tiếp nhận yêu cầu qua điện thoại, zalo, website nhanh chóng. Tiến hành báo giá tối ưu và tư vấn lộ trình phù hợp ngay sau vài phút.
+          </p>
+          <ul class="space-y-2 text-xs text-slate-600 font-medium border-t border-slate-100 pt-4">
+            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-green"></i> Tiếp nhận yêu cầu siêu tốc</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-green"></i> Tư vấn hỗ trợ miễn phí 24/7</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-green"></i> Phục vụ đón tiễn tận nơi</li>
+          </ul>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="glass rounded-3xl border border-slate-200/60 p-8 shadow-premium hover:shadow-glow transition-all duration-300 hover:-translate-y-1 group relative">
+          <div class="absolute top-0 right-0 h-24 w-24 rounded-bl-full bg-brand-cyan/5 transition-transform duration-500 group-hover:scale-150 -z-10"></div>
+          <span class="grid size-12 place-items-center rounded-2xl bg-cyan-500 text-white shadow-lg mb-6 text-xl">
+            <i class="fa-solid fa-award"></i>
+          </span>
+          <h3 class="text-lg font-bold text-slate-900 mb-3">Kinh nghiệm</h3>
+          <p class="text-xs text-slate-500 mb-5 leading-relaxed">
+            Hơn 10 năm hoạt động trong ngành vận tải du lịch tại Nha Trang, sở hữu dàn xe đời mới và đội ngũ tài xế chuyên chạy đường dài đèo dốc an toàn.
+          </p>
+          <ul class="space-y-2 text-xs text-slate-600 font-medium border-t border-slate-100 pt-4">
+            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-green"></i> Hệ thống xe đời mới chất lượng</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-green"></i> Tài xế lịch sự, rành đường</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-green"></i> Phục vụ chu đáo chuyên nghiệp</li>
+          </ul>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="glass rounded-3xl border border-slate-200/60 p-8 shadow-premium hover:shadow-glow transition-all duration-300 hover:-translate-y-1 group relative">
+          <div class="absolute top-0 right-0 h-24 w-24 rounded-bl-full bg-brand-green/5 transition-transform duration-500 group-hover:scale-150 -z-10"></div>
+          <span class="grid size-12 place-items-center rounded-2xl bg-emerald-500 text-white shadow-lg mb-6 text-xl">
+            <i class="fa-solid fa-shield-halved"></i>
+          </span>
+          <h3 class="text-lg font-bold text-slate-900 mb-3">Chuyên nghiệp</h3>
+          <p class="text-xs text-slate-500 mb-5 leading-relaxed">
+            Luôn tuân thủ lịch trình và thời gian của khách hàng, đảm bảo an toàn giao thông và ứng biến xử lý mọi vấn đề linh hoạt.
+          </p>
+          <ul class="space-y-2 text-xs text-slate-600 font-medium border-t border-slate-100 pt-4">
+            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-green"></i> Đón tiễn đúng giờ quy định</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-green"></i> Xử lý linh hoạt mọi sự cố</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-green"></i> Cam kết hoàn lại tiền nếu sai hẹn</li>
+          </ul>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Car Category Tabs Rates Section -->
+  <section id="car-rates" class="py-16 md:py-24 bg-white relative overflow-hidden">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <span class="inline-flex items-center gap-1.5 rounded-full border border-brand/20 bg-brand/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-brand">
+          <i class="fa-solid fa-car"></i> Danh mục xe du lịch
+        </span>
+        <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight mt-3 mb-4">Dàn Xe Đời Mới Cao Cấp</h2>
+        <p class="text-slate-500 text-sm md:text-base leading-relaxed">
+          Đầy đủ chủng loại xe phục vụ khách từ cá nhân đến tập thể cơ quan lớn.
+        </p>
+      </div>
+
+      <!-- Tab Buttons Switcher -->
+      <div class="flex justify-center mb-10">
+        <div class="inline-flex p-1 bg-slate-100 rounded-2xl border border-slate-200/50 flex-wrap justify-center gap-1">
+          {carTabs.map((tab, idx) => (
+            <button 
+              class={`px-5 py-2.5 rounded-xl text-sm font-bold transition-all duration-300 ${idx === 0 ? 'bg-brand text-white shadow-premium' : 'text-slate-600 hover:text-brand'}`} 
+              data-tab-trigger={tab.id}
+            >
+              {tab.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <!-- Tab Content Panels -->
+      <div class="relative min-h-[400px]">
+        {carTabs.map((tab, idx) => (
+          <div 
+            id={tab.id} 
+            class={`transition-all duration-500 absolute inset-x-0 top-0 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ${idx === 0 ? 'opacity-100 z-10 scale-100' : 'opacity-0 z-0 scale-95 pointer-events-none'}`}
+          >
+            <!-- Card items -->
+            <div class="md:col-span-2 lg:col-span-3 mb-4">
+              <p class="text-sm font-semibold text-slate-500 border-l-4 border-brand pl-3">
+                {tab.description}
+              </p>
+            </div>
+            
+            {tab.cars.map(car => (
+              <div class="bg-white border border-slate-200/60 rounded-3xl p-4 shadow-sm hover:shadow-premium transition-all duration-300 group">
+                <div class="rounded-2xl overflow-hidden aspect-[4/3] bg-slate-100 mb-4 border border-slate-100 relative">
+                  <img 
+                    src={car.image} 
+                    alt={car.name} 
+                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <!-- Category Badge overlay -->
+                  <span class="absolute top-3 left-3 bg-brand/10 border border-brand/20 backdrop-blur-md text-brand text-[10px] font-bold px-2 py-0.5 rounded-full">
+                    {tab.label}
+                  </span>
+                </div>
+                <div class="flex items-center justify-between mt-2">
+                  <div>
+                    <h4 class="font-extrabold text-slate-900 group-hover:text-brand transition-colors text-base">{car.name}</h4>
+                    <p class="text-xs text-slate-400 mt-0.5">Xe đời mới, điều hòa lạnh sâu</p>
+                  </div>
+                  <a href="tel:0935373577" class="size-10 flex items-center justify-center bg-slate-100 hover:bg-brand hover:text-white rounded-xl text-slate-600 transition-all duration-300">
+                    <i class="fa-solid fa-phone"></i>
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Featured Tours / Destination (Du lịch Nha Trang) -->
+  <section class="py-16 md:py-24 bg-slate-50 relative overflow-hidden">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6 mb-12">
+        <div>
+          <span class="inline-flex items-center gap-1.5 rounded-full border border-brand/20 bg-brand/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-brand">
+            <i class="fa-solid fa-compass"></i> Địa điểm du lịch nổi tiếng
+          </span>
+          <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight mt-3">Tour Du Lịch Đón Tiễn Gia Huy</h2>
+        </div>
+        <a href="/news/tin-tuc/" class="inline-flex items-center gap-1 text-sm font-bold text-brand hover:underline">
+          Xem tất cả bài viết <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {featuredTours.map(tour => (
+          <article class="bg-white border border-slate-200/60 rounded-3xl overflow-hidden shadow-sm hover:shadow-premium transition-all duration-300 group flex flex-col justify-between">
+            <a href={`/news/${tour.category}/${tour.slug}/`} class="block overflow-hidden aspect-[16/10] bg-slate-100 border-b border-slate-100">
+              <img 
+                src={tour.image} 
+                alt={tour.title} 
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+            </a>
+            <div class="p-5 flex-grow flex flex-col justify-between">
+              <div>
+                <span class="text-[10px] font-bold text-brand uppercase tracking-wider">Đón Tiễn Tour</span>
+                <h3 class="text-[15px] font-extrabold text-slate-950 mt-1 line-clamp-2 hover:text-brand transition-colors">
+                  <a href={`/news/${tour.category}/${tour.slug}/`}>{tour.title}</a>
+                </h3>
+                <p class="text-xs text-slate-500 mt-2 line-clamp-2 leading-relaxed">
+                  {tour.description}
+                </p>
+              </div>
+              <div class="mt-5 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-400">
+                <span><i class="fa-regular fa-clock mr-1"></i> {tour.date.split(' ')[0]}</span>
+                <span><i class="fa-regular fa-eye mr-1"></i> {tour.views}</span>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Partner Carousel Section -->
+  <section class="py-12 bg-white border-y border-slate-100">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-wrap items-center justify-center gap-8 md:gap-16 opacity-60 grayscale hover:opacity-85 transition-opacity duration-300">
+        {partners.map(p => (
+          p.url ? (
+            <a href={p.url} target="_blank" rel="noopener noreferrer" title={p.name}>
+              <img src={p.logo} alt={p.name} class="h-8 md:h-10 w-auto object-contain hover:scale-105 transition-transform" />
+            </a>
+          ) : (
+            <img src={p.logo} alt={p.name} title={p.name} class="h-8 md:h-10 w-auto object-contain hover:scale-105 transition-transform" />
+          )
+        ))}
+      </div>
+    </div>
+  </section>
 </Layout>
+
+<script>
+  // Simple Interactive Hero Slideshow Carousel
+  let currentSlide = 0;
+  const slides = document.querySelectorAll('#hero-slider > div');
+  const slideIndicators = document.querySelectorAll('button[data-slide]');
+  const totalSlides = slides.length;
+
+  function setSlide(index: number) {
+    slides[currentSlide].classList.remove('opacity-100', 'z-10');
+    slides[currentSlide].classList.add('opacity-0', 'z-0');
+    slideIndicators[currentSlide].classList.remove('bg-white', 'w-6');
+    slideIndicators[currentSlide].classList.add('bg-white/40');
+
+    currentSlide = index;
+
+    slides[currentSlide].classList.remove('opacity-0', 'z-0');
+    slides[currentSlide].classList.add('opacity-100', 'z-10');
+    slideIndicators[currentSlide].classList.remove('bg-white/40');
+    slideIndicators[currentSlide].classList.add('bg-white', 'w-6');
+  }
+
+  function nextSlide() {
+    let next = (currentSlide + 1) % totalSlides;
+    setSlide(next);
+  }
+
+  // Auto slide every 5s
+  let interval = setInterval(nextSlide, 5000);
+
+  // Indicators click listener
+  slideIndicators.forEach((ind, i) => {
+    ind.addEventListener('click', () => {
+      clearInterval(interval);
+      setSlide(i);
+      interval = setInterval(nextSlide, 5000);
+    });
+  });
+
+  // Tab Switcher JS logic
+  const tabTriggers = document.querySelectorAll('[data-tab-trigger]');
+  
+  tabTriggers.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const targetId = btn.getAttribute('data-tab-trigger');
+      
+      // Update tab buttons style
+      tabTriggers.forEach(t => {
+        t.classList.remove('bg-brand', 'text-white', 'shadow-premium');
+        t.classList.add('text-slate-600', 'hover:text-brand');
+      });
+      btn.classList.add('bg-brand', 'text-white', 'shadow-premium');
+      btn.classList.remove('text-slate-600', 'hover:text-brand');
+
+      // Hide all panels, show target panel
+      const panels = document.querySelectorAll('[data-tab-trigger]');
+      // Wait, we need to select all target tab content divs.
+      // We mapped IDs matching tab.id: xe-4-7, xe-16, xe-29, xe-35-45.
+      const allPanels = ['xe-4-7', 'xe-16', 'xe-29', 'xe-35-45'];
+      allPanels.forEach(id => {
+        const panel = document.getElementById(id);
+        if (panel) {
+          if (id === targetId) {
+            panel.classList.remove('opacity-0', 'z-0', 'scale-95', 'pointer-events-none');
+            panel.classList.add('opacity-100', 'z-10', 'scale-100');
+          } else {
+            panel.classList.remove('opacity-100', 'z-10', 'scale-100');
+            panel.classList.add('opacity-0', 'z-0', 'scale-95', 'pointer-events-none');
+          }
+        }
+      });
+
+    });
+  });
+</script>

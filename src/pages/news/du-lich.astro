@@ -1,0 +1,153 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import postsData from '../../data/posts.json';
+
+const category = 'du-lich';
+const categoryLabel = 'Du lịch';
+
+// Filter posts by category
+const posts = postsData.filter(post => post.category === category);
+
+// Popular posts (highest views across all categories)
+const popularPosts = [...postsData].sort((a, b) => b.views - a.views).slice(0, 5);
+
+const categories = [
+  { label: 'Tin tức', path: '/news/tin-tuc/' },
+  { label: 'Dịch vụ', path: '/news/dich-vu/' },
+  { label: 'Du lịch', path: '/news/du-lich/' },
+];
+---
+
+<Layout 
+  title={`${categoryLabel} - Xe Du Lịch Gia Huy Nha Trang`}
+  description={`Danh mục các tour du lịch hấp dẫn xuất phát từ Nha Trang, kết hợp xe đưa đón đời mới chất lượng cao Gia Huy.`}
+>
+  <!-- Page Header Banner -->
+  <section class="relative bg-slate-900 py-16 text-center overflow-hidden">
+    <div class="absolute inset-0 bg-cover bg-center opacity-30" style="background-image: url('/uploads/slider/xe-du-lich-nha-trang_1.jpg')"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-slate-900/60 to-slate-900/90 z-0"></div>
+    <div class="relative z-10 mx-auto max-w-7xl px-4 flex flex-col items-center">
+      <h1 class="text-white text-3xl sm:text-5xl font-extrabold tracking-tight">{categoryLabel}</h1>
+      <p class="text-slate-300 text-xs sm:text-base max-w-lg mt-3 leading-relaxed">
+        Khám phá các địa danh du lịch tuyệt đẹp miền Trung Tây Nguyên cùng xe Gia Huy.
+      </p>
+    </div>
+  </section>
+
+  <!-- Content Section -->
+  <section class="py-12 bg-white relative">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      
+      <!-- Breadcrumb nav -->
+      <nav class="flex items-center gap-2 text-xs text-slate-400 font-medium mb-8">
+        <a href="/" class="hover:text-brand transition-colors"><i class="fa-solid fa-house"></i> Trang chủ</a>
+        <i class="fa-solid fa-chevron-right text-[10px]"></i>
+        <a href="/news/tin-tuc/" class="hover:text-brand transition-colors">Tin tức</a>
+        <i class="fa-solid fa-chevron-right text-[10px]"></i>
+        <span class="text-slate-600 font-semibold">{categoryLabel}</span>
+      </nav>
+
+      <!-- Grid layout: Sidebar + Main content -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Main content list - 8 cols -->
+        <div class="lg:col-span-8 space-y-6">
+          {posts.map((post) => (
+            <article class="glass rounded-3xl border border-slate-200/60 p-4 md:p-6 shadow-sm hover:shadow-premium transition-all duration-300 group grid grid-cols-1 sm:grid-cols-12 gap-6 items-center">
+              
+              <!-- Thumbnail -->
+              <a href={`/news/${post.category}/${post.slug}/`} class="sm:col-span-5 rounded-2xl overflow-hidden aspect-[4/3] bg-slate-100 border border-slate-100 block">
+                <img 
+                  src={post.image} 
+                  alt={post.title} 
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+              </a>
+
+              <!-- Text Details -->
+              <div class="sm:col-span-7 flex flex-col justify-between h-full py-1">
+                <div>
+                  <span class="text-[10px] font-bold text-brand uppercase tracking-wider bg-brand/5 border border-brand/10 px-2.5 py-0.5 rounded-full">
+                    {categoryLabel}
+                  </span>
+                  <h3 class="text-lg md:text-xl font-extrabold text-slate-900 mt-2 mb-2 hover:text-brand transition-colors">
+                    <a href={`/news/${post.category}/${post.slug}/`}>{post.title}</a>
+                  </h3>
+                  <p class="text-xs text-slate-500 line-clamp-3 leading-relaxed mb-4">
+                    {post.description}
+                  </p>
+                </div>
+                
+                <div class="flex items-center justify-between text-[11px] text-slate-400 border-t border-slate-100 pt-3 mt-2">
+                  <div class="flex items-center gap-3">
+                    <span><i class="fa-regular fa-clock mr-1"></i> {post.date.split(' ')[0]}</span>
+                    <span><i class="fa-regular fa-eye mr-1"></i> Đã xem: {post.views}</span>
+                  </div>
+                  <a href={`/news/${post.category}/${post.slug}/`} class="font-bold text-brand hover:underline">
+                    Xem chi tiết <i class="fa-solid fa-angle-right text-[9px] ml-0.5"></i>
+                  </a>
+                </div>
+              </div>
+
+            </article>
+          ))}
+        </div>
+
+        <!-- Sidebar - 4 cols -->
+        <aside class="lg:col-span-4 space-y-8">
+          
+          <!-- Category list block -->
+          <div class="glass border border-slate-200/60 rounded-3xl p-6 shadow-sm">
+            <h4 class="text-base font-extrabold text-slate-950 pb-3 border-b border-slate-100 mb-4 flex items-center gap-2">
+              <i class="fa-solid fa-bars text-brand"></i> Danh mục tin tức
+            </h4>
+            <div class="flex flex-col gap-2">
+              {categories.map((cat) => (
+                <a 
+                  href={cat.path} 
+                  class={`flex items-center justify-between px-4 py-3 rounded-xl text-sm font-semibold transition-all duration-300 ${
+                    cat.path.includes(category) 
+                      ? 'bg-brand text-white shadow-premium' 
+                      : 'text-slate-600 hover:text-brand hover:bg-slate-50'
+                  }`}
+                >
+                  <span>{cat.label}</span>
+                  <i class="fa-solid fa-chevron-right text-xs opacity-70"></i>
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <!-- Hot posts list block -->
+          <div class="glass border border-slate-200/60 rounded-3xl p-6 shadow-sm">
+            <h4 class="text-base font-extrabold text-slate-950 pb-3 border-b border-slate-100 mb-4 flex items-center gap-2">
+              <i class="fa-solid fa-fire text-brand-orange animate-pulse"></i> Xem nhiều nhất
+            </h4>
+            <div class="flex flex-col gap-4">
+              {popularPosts.map((post) => (
+                <div class="flex items-center gap-3 group">
+                  <a href={`/news/${post.category}/${post.slug}/`} class="size-16 rounded-xl overflow-hidden bg-slate-100 border border-slate-100 shrink-0 block">
+                    <img 
+                      src={post.image} 
+                      alt={post.title} 
+                      class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    />
+                  </a>
+                  <div>
+                    <h5 class="text-xs font-extrabold text-slate-900 line-clamp-2 leading-snug hover:text-brand transition-colors">
+                      <a href={`/news/${post.category}/${post.slug}/`}>{post.title}</a>
+                    </h5>
+                    <span class="text-[10px] text-slate-400 mt-1 block"><i class="fa-regular fa-eye mr-0.5"></i> {post.views} lượt xem</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+        </aside>
+
+      </div>
+
+    </div>
+  </section>
+</Layout>
