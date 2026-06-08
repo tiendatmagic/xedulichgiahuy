@@ -79,42 +79,24 @@ const sliderImages = [
 ---
 
 <Layout>
-  <!-- Hero Slideshow Section -->
+  <!-- Hero Slideshow Section — chỉ ảnh, không text overlay -->
   <section class="relative h-[65vh] md:h-[80vh] w-full overflow-hidden bg-slate-900">
     <div id="hero-slider" class="absolute inset-0 w-full h-full">
       {sliderImages.map((src, index) => (
-        <div class={`absolute inset-0 w-full h-full bg-cover bg-center transition-opacity duration-1000 ease-in-out ${index === 0 ? 'opacity-100 z-10' : 'opacity-0 z-0'}`} style={`background-image: linear-gradient(to bottom, rgba(15,23,42,0.3), rgba(15,23,42,0.7)), url(${src})`}></div>
+        <div
+          class={`absolute inset-0 w-full h-full bg-cover bg-center transition-opacity duration-1000 ease-in-out ${index === 0 ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
+          style={`background-image: url(${src})`}
+        ></div>
       ))}
-    </div>
-
-    <!-- Hero Content overlay -->
-    <div class="relative z-20 flex h-full items-center justify-center text-center px-4">
-      <div class="max-w-4xl flex flex-col items-center">
-        <span class="inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-white/10 backdrop-blur-md px-3.5 py-1.5 text-xs font-semibold tracking-wide text-brand-cyan mb-4 animate-fade-in shadow-premium">
-          <i class="fa-solid fa-sparkles text-brand-yellow"></i> NHÀ XE GIA HUY NHA TRANG
-        </span>
-        <h1 class="text-white text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-none mb-6 animate-slide-up">
-          Dịch Vụ Cho Thuê Xe Du Lịch <br />
-          <span class="text-gradient">Chuyên Nghiệp & Giá Tốt Nhất</span>
-        </h1>
-        <p class="text-slate-300 text-sm sm:text-lg max-w-2xl mb-8 leading-relaxed">
-          Chúng tôi cung cấp các dòng xe đời mới từ 4, 7, 16, 29, 35 đến 45 chỗ phục vụ tham quan du lịch, đón tiễn sân bay Cam Ranh, tour liên tỉnh.
-        </p>
-        <div class="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
-          <a href="tel:0935373577" class="inline-flex items-center justify-center gap-2 bg-brand-gradient hover:bg-brand-glow text-white text-base font-bold px-8 py-3.5 rounded-2xl shadow-glow hover:scale-105 transition-all duration-300">
-            <i class="fa-solid fa-phone"></i> Gọi Đặt Xe Ngay
-          </a>
-          <a href="#car-rates" class="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 border border-white/20 text-white text-base font-semibold px-8 py-3.5 rounded-2xl backdrop-blur-md hover:scale-105 transition-all duration-300">
-            Xem Bảng Giá Xe
-          </a>
-        </div>
-      </div>
     </div>
 
     <!-- Slide Indicators -->
     <div class="absolute bottom-6 left-0 right-0 z-20 flex justify-center gap-2">
       {sliderImages.map((_, index) => (
-        <button class={`size-2.5 rounded-full border border-white/30 transition-all duration-300 ${index === 0 ? 'bg-white w-6' : 'bg-white/40'}`} data-slide={index}></button>
+        <button
+          class={`size-2.5 rounded-full border border-white/30 transition-all duration-300 ${index === 0 ? 'bg-white w-6' : 'bg-white/40'}`}
+          data-slide={index}
+        ></button>
       ))}
     </div>
   </section>
@@ -159,9 +141,9 @@ const sliderImages = [
           <!-- Colorful backdrop decoration -->
           <div class="absolute -inset-4 bg-brand-gradient opacity-10 blur-2xl rounded-3xl -z-10"></div>
           <div class="rounded-3xl border border-slate-200/60 overflow-hidden shadow-premium group">
-            <img 
-              src="/uploads/banners/xe-du-lich-nha-trang.jpg" 
-              alt="Dịch vụ xe du lịch Nha Trang Gia Huy" 
+            <img
+              src="/uploads/banners/xe-du-lich-nha-trang.jpg"
+              alt="Dịch vụ xe du lịch Nha Trang Gia Huy"
               class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
             />
           </div>
@@ -171,10 +153,10 @@ const sliderImages = [
   </section>
 
   <!-- Core Strengths Section -->
-  <section class="py-16 md:py-24 bg-slate-50 relative overflow-hidden">
+  <section class="py-16 md:py-24 bg-slate-50 relative">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
-      
-      <div class="text-center max-w-3xl mx-auto mb-16">
+
+      <div class="text-center max-w-3xl mx-auto mb-12">
         <span class="inline-flex items-center gap-1.5 rounded-full border border-brand/20 bg-brand/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-brand">
           <i class="fa-solid fa-star text-brand-yellow animate-spin [animation-duration:6s]"></i> Tại sao nên chọn chúng tôi
         </span>
@@ -184,59 +166,69 @@ const sliderImages = [
         </p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        
-        <!-- Card 1 -->
-        <div class="glass rounded-3xl border border-slate-200/60 p-8 shadow-premium hover:shadow-glow transition-all duration-300 hover:-translate-y-1 group relative">
-          <div class="absolute top-0 right-0 h-24 w-24 rounded-bl-full bg-brand/5 transition-transform duration-500 group-hover:scale-150 -z-10"></div>
-          <span class="grid size-12 place-items-center rounded-2xl bg-brand-gradient text-white shadow-glow mb-6 text-xl">
-            <i class="fa-solid fa-bolt"></i>
-          </span>
-          <h3 class="text-lg font-bold text-slate-900 mb-3">Nhanh chóng</h3>
-          <p class="text-xs text-slate-500 mb-5 leading-relaxed">
-            Tiếp nhận yêu cầu qua điện thoại, zalo, website nhanh chóng. Tiến hành báo giá tối ưu và tư vấn lộ trình phù hợp ngay sau vài phút.
-          </p>
-          <ul class="space-y-2 text-xs text-slate-600 font-medium border-t border-slate-100 pt-4">
-            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-green"></i> Tiếp nhận yêu cầu siêu tốc</li>
-            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-green"></i> Tư vấn hỗ trợ miễn phí 24/7</li>
-            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-green"></i> Phục vụ đón tiễn tận nơi</li>
-          </ul>
+      <!-- Desktop: grid 3 cột | Mobile: slider có swipe + bullets -->
+      <div class="relative -mx-4 px-4 md:mx-0 md:px-0">
+        <div id="strengths-slider" class="flex md:grid md:grid-cols-3 gap-6 overflow-x-auto md:overflow-visible snap-x snap-mandatory no-scrollbar pb-4 md:pb-0">
+
+          <!-- Card 1 -->
+          <div class="glass rounded-3xl border border-slate-200/60 p-8 shadow-premium hover:shadow-glow transition-all duration-300 hover:-translate-y-1 group relative flex-none w-[85vw] sm:w-[70vw] md:w-auto snap-center">
+            <div class="absolute top-0 right-0 h-24 w-24 rounded-bl-full bg-brand/5 transition-transform duration-500 group-hover:scale-150 -z-10"></div>
+            <span class="grid size-12 place-items-center rounded-2xl bg-brand-gradient text-white shadow-glow mb-6 text-xl">
+              <i class="fa-solid fa-bolt"></i>
+            </span>
+            <h3 class="text-lg font-bold text-slate-900 mb-3">Nhanh chóng</h3>
+            <p class="text-sm text-slate-500 mb-5 leading-relaxed">
+              Tiếp nhận yêu cầu qua điện thoại, zalo, website nhanh chóng. Tiến hành báo giá tối ưu và tư vấn lộ trình phù hợp ngay sau vài phút.
+            </p>
+            <ul class="space-y-2 text-sm text-slate-600 font-medium border-t border-slate-100 pt-4">
+              <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-green"></i> Tiếp nhận yêu cầu siêu tốc</li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-green"></i> Tư vấn hỗ trợ miễn phí 24/7</li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-green"></i> Phục vụ đón tiễn tận nơi</li>
+            </ul>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="glass rounded-3xl border border-slate-200/60 p-8 shadow-premium hover:shadow-glow transition-all duration-300 hover:-translate-y-1 group relative flex-none w-[85vw] sm:w-[70vw] md:w-auto snap-center">
+            <div class="absolute top-0 right-0 h-24 w-24 rounded-bl-full bg-brand-cyan/5 transition-transform duration-500 group-hover:scale-150 -z-10"></div>
+            <span class="grid size-12 place-items-center rounded-2xl bg-cyan-500 text-white shadow-lg mb-6 text-xl">
+              <i class="fa-solid fa-award"></i>
+            </span>
+            <h3 class="text-lg font-bold text-slate-900 mb-3">Kinh nghiệm</h3>
+            <p class="text-sm text-slate-500 mb-5 leading-relaxed">
+              Hơn 10 năm hoạt động trong ngành vận tải du lịch tại Nha Trang, sở hữu dàn xe đời mới và đội ngũ tài xế chuyên chạy đường dài đèo dốc an toàn.
+            </p>
+            <ul class="space-y-2 text-sm text-slate-600 font-medium border-t border-slate-100 pt-4">
+              <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-green"></i> Hệ thống xe đời mới chất lượng</li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-green"></i> Tài xế lịch sự, rành đường</li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-green"></i> Phục vụ chu đáo chuyên nghiệp</li>
+            </ul>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="glass rounded-3xl border border-slate-200/60 p-8 shadow-premium hover:shadow-glow transition-all duration-300 hover:-translate-y-1 group relative flex-none w-[85vw] sm:w-[70vw] md:w-auto snap-center">
+            <div class="absolute top-0 right-0 h-24 w-24 rounded-bl-full bg-brand-green/5 transition-transform duration-500 group-hover:scale-150 -z-10"></div>
+            <span class="grid size-12 place-items-center rounded-2xl bg-emerald-500 text-white shadow-lg mb-6 text-xl">
+              <i class="fa-solid fa-shield-halved"></i>
+            </span>
+            <h3 class="text-lg font-bold text-slate-900 mb-3">Chuyên nghiệp</h3>
+            <p class="text-sm text-slate-500 mb-5 leading-relaxed">
+              Luôn tuân thủ lịch trình và thời gian của khách hàng, đảm bảo an toàn giao thông và ứng biến xử lý mọi vấn đề linh hoạt.
+            </p>
+            <ul class="space-y-2 text-sm text-slate-600 font-medium border-t border-slate-100 pt-4">
+              <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-green"></i> Đón tiễn đúng giờ quy định</li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-green"></i> Xử lý linh hoạt mọi sự cố</li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-green"></i> Cam kết hoàn lại tiền nếu sai hẹn</li>
+            </ul>
+          </div>
+
         </div>
 
-        <!-- Card 2 -->
-        <div class="glass rounded-3xl border border-slate-200/60 p-8 shadow-premium hover:shadow-glow transition-all duration-300 hover:-translate-y-1 group relative">
-          <div class="absolute top-0 right-0 h-24 w-24 rounded-bl-full bg-brand-cyan/5 transition-transform duration-500 group-hover:scale-150 -z-10"></div>
-          <span class="grid size-12 place-items-center rounded-2xl bg-cyan-500 text-white shadow-lg mb-6 text-xl">
-            <i class="fa-solid fa-award"></i>
-          </span>
-          <h3 class="text-lg font-bold text-slate-900 mb-3">Kinh nghiệm</h3>
-          <p class="text-xs text-slate-500 mb-5 leading-relaxed">
-            Hơn 10 năm hoạt động trong ngành vận tải du lịch tại Nha Trang, sở hữu dàn xe đời mới và đội ngũ tài xế chuyên chạy đường dài đèo dốc an toàn.
-          </p>
-          <ul class="space-y-2 text-xs text-slate-600 font-medium border-t border-slate-100 pt-4">
-            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-green"></i> Hệ thống xe đời mới chất lượng</li>
-            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-green"></i> Tài xế lịch sự, rành đường</li>
-            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-green"></i> Phục vụ chu đáo chuyên nghiệp</li>
-          </ul>
+        <!-- Bullet dots cho mobile slider -->
+        <div id="strengths-dots" class="flex md:hidden justify-center gap-2 mt-6">
+          <button class="size-2.5 rounded-full bg-brand transition-all duration-300 w-6" data-strengths-dot="0"></button>
+          <button class="size-2.5 rounded-full bg-slate-300 transition-all duration-300" data-strengths-dot="1"></button>
+          <button class="size-2.5 rounded-full bg-slate-300 transition-all duration-300" data-strengths-dot="2"></button>
         </div>
-
-        <!-- Card 3 -->
-        <div class="glass rounded-3xl border border-slate-200/60 p-8 shadow-premium hover:shadow-glow transition-all duration-300 hover:-translate-y-1 group relative">
-          <div class="absolute top-0 right-0 h-24 w-24 rounded-bl-full bg-brand-green/5 transition-transform duration-500 group-hover:scale-150 -z-10"></div>
-          <span class="grid size-12 place-items-center rounded-2xl bg-emerald-500 text-white shadow-lg mb-6 text-xl">
-            <i class="fa-solid fa-shield-halved"></i>
-          </span>
-          <h3 class="text-lg font-bold text-slate-900 mb-3">Chuyên nghiệp</h3>
-          <p class="text-xs text-slate-500 mb-5 leading-relaxed">
-            Luôn tuân thủ lịch trình và thời gian của khách hàng, đảm bảo an toàn giao thông và ứng biến xử lý mọi vấn đề linh hoạt.
-          </p>
-          <ul class="space-y-2 text-xs text-slate-600 font-medium border-t border-slate-100 pt-4">
-            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-green"></i> Đón tiễn đúng giờ quy định</li>
-            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-green"></i> Xử lý linh hoạt mọi sự cố</li>
-            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-green"></i> Cam kết hoàn lại tiền nếu sai hẹn</li>
-          </ul>
-        </div>
-
       </div>
 
     </div>
@@ -245,7 +237,7 @@ const sliderImages = [
   <!-- Car Category Tabs Rates Section -->
   <section id="car-rates" class="py-16 md:py-24 bg-white relative overflow-hidden">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
-      
+
       <div class="text-center max-w-3xl mx-auto mb-12">
         <span class="inline-flex items-center gap-1.5 rounded-full border border-brand/20 bg-brand/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-brand">
           <i class="fa-solid fa-car"></i> Danh mục xe du lịch
@@ -260,8 +252,8 @@ const sliderImages = [
       <div class="flex justify-center mb-10">
         <div class="inline-flex p-1 bg-slate-100 rounded-2xl border border-slate-200/50 flex-wrap justify-center gap-1">
           {carTabs.map((tab, idx) => (
-            <button 
-              class={`px-5 py-2.5 rounded-xl text-sm font-bold transition-all duration-300 ${idx === 0 ? 'bg-brand text-white shadow-premium' : 'text-slate-600 hover:text-brand'}`} 
+            <button
+              class={`px-5 py-2.5 rounded-xl text-sm font-bold transition-all duration-300 ${idx === 0 ? 'bg-brand text-white shadow-premium' : 'text-slate-600 hover:text-brand'}`}
               data-tab-trigger={tab.id}
             >
               {tab.label}
@@ -273,8 +265,8 @@ const sliderImages = [
       <!-- Tab Content Panels -->
       <div class="w-full">
         {carTabs.map((tab, idx) => (
-          <div 
-            id={tab.id} 
+          <div
+            id={tab.id}
             class={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ${idx === 0 ? '' : 'hidden'}`}
           >
             <!-- Card items -->
@@ -283,13 +275,13 @@ const sliderImages = [
                 {tab.description}
               </p>
             </div>
-            
+
             {tab.cars.map(car => (
               <div class="bg-white border border-slate-200/60 rounded-3xl p-4 shadow-sm hover:shadow-premium transition-all duration-300 group">
                 <div class="rounded-2xl overflow-hidden aspect-[4/3] bg-slate-100 mb-4 border border-slate-100 relative">
-                  <img 
-                    src={car.image} 
-                    alt={car.name} 
+                  <img
+                    src={car.image}
+                    alt={car.name}
                     class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                   <!-- Category Badge overlay -->
@@ -318,7 +310,7 @@ const sliderImages = [
   <!-- Featured Tours / Destination (Du lịch Nha Trang) -->
   <section class="py-16 md:py-24 bg-slate-50 relative overflow-hidden">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
-      
+
       <div class="flex flex-col md:flex-row items-center justify-between gap-6 mb-12">
         <div>
           <span class="inline-flex items-center gap-1.5 rounded-full border border-brand/20 bg-brand/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-brand">
@@ -335,9 +327,9 @@ const sliderImages = [
         {featuredTours.map(tour => (
           <article class="bg-white border border-slate-200/60 rounded-3xl overflow-hidden shadow-sm hover:shadow-premium transition-all duration-300 group flex flex-col justify-between">
             <a href={`/news/${tour.category}/${tour.slug}/`} class="block overflow-hidden aspect-[16/10] bg-slate-100 border-b border-slate-100">
-              <img 
-                src={tour.image} 
-                alt={tour.title} 
+              <img
+                src={tour.image}
+                alt={tour.title}
                 class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
             </a>
@@ -363,26 +355,72 @@ const sliderImages = [
     </div>
   </section>
 
-  <!-- Partner Carousel Section -->
+  <!-- Partner Section -->
   <section class="py-12 bg-white border-y border-slate-100">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-wrap items-center justify-center gap-8 md:gap-16 opacity-60 grayscale hover:opacity-85 transition-opacity duration-300">
+
+      <!-- Tiêu đề đồng bộ với các section khác -->
+      <div class="text-center max-w-3xl mx-auto mb-10">
+        <span class="inline-flex items-center gap-1.5 rounded-full border border-brand/20 bg-brand/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-brand">
+          <i class="fa-solid fa-handshake"></i> Hợp tác & tin dùng
+        </span>
+        <h2 class="text-2xl font-extrabold text-slate-900 tracking-tight mt-3">Đối Tác &amp; Khách Hàng Tin Dùng</h2>
+      </div>
+
+      <!-- Desktop: flex 5 cột hiển thị hết -->
+      <div class="hidden md:flex items-center justify-between gap-6">
         {partners.map(p => (
-          p.url ? (
-            <a href={p.url} target="_blank" rel="noopener noreferrer" title={p.name}>
-              <img src={p.logo} alt={p.name} class="h-8 md:h-10 w-auto object-contain hover:scale-105 transition-transform" />
-            </a>
-          ) : (
-            <img src={p.logo} alt={p.name} title={p.name} class="h-8 md:h-10 w-auto object-contain hover:scale-105 transition-transform" />
-          )
+          <div class="flex-1 flex items-center justify-center">
+            {p.url ? (
+              <a href={p.url} target="_blank" rel="noopener noreferrer" title={p.name}
+                class="transition-all duration-300 hover:scale-105">
+                <img src={p.logo} alt={p.name} class="h-full w-full object-contain" />
+              </a>
+            ) : (
+              <img src={p.logo} alt={p.name} title={p.name}
+                class="h-full w-full object-contain transition-all duration-300 hover:scale-105" />
+            )}
+          </div>
         ))}
       </div>
+
+      <!-- Mobile: slider swipe + bullets -->
+      <div class="md:hidden relative -mx-4 px-4">
+        <div id="partners-slider" class="flex items-center gap-4 overflow-x-auto snap-x snap-mandatory no-scrollbar pb-2">
+          {partners.map(p => (
+            <div class="flex-none snap-center flex items-center justify-center w-[70vw] py-2">
+              {p.url ? (
+                <a href={p.url} target="_blank" rel="noopener noreferrer" title={p.name}
+                  class="opacity-60 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-300">
+                  <img src={p.logo} alt={p.name} class="h-10 w-auto object-contain" />
+                </a>
+              ) : (
+                <img src={p.logo} alt={p.name} title={p.name}
+                  class="h-10 w-auto object-contain opacity-60 grayscale" />
+              )}
+            </div>
+          ))}
+        </div>
+
+        <!-- Bullet dots - chỉ hiện trên mobile -->
+        <div id="partners-dots" class="flex justify-center gap-2 mt-4">
+          {partners.map((_, i) => (
+            <button
+              class={`size-2 rounded-full transition-all duration-300 ${i === 0 ? 'bg-brand w-5' : 'bg-slate-300'}`}
+              data-partner-dot={i}
+            ></button>
+          ))}
+        </div>
+      </div>
+
     </div>
   </section>
 </Layout>
 
 <script>
-  // Simple Interactive Hero Slideshow Carousel
+  // ==========================================
+  // 1. Hero Slideshow
+  // ==========================================
   let currentSlide = 0;
   const slides = document.querySelectorAll('#hero-slider > div');
   const slideIndicators = document.querySelectorAll('button[data-slide]');
@@ -393,9 +431,7 @@ const sliderImages = [
     slides[currentSlide].classList.add('opacity-0', 'z-0');
     slideIndicators[currentSlide].classList.remove('bg-white', 'w-6');
     slideIndicators[currentSlide].classList.add('bg-white/40');
-
     currentSlide = index;
-
     slides[currentSlide].classList.remove('opacity-0', 'z-0');
     slides[currentSlide].classList.add('opacity-100', 'z-10');
     slideIndicators[currentSlide].classList.remove('bg-white/40');
@@ -403,50 +439,129 @@ const sliderImages = [
   }
 
   function nextSlide() {
-    let next = (currentSlide + 1) % totalSlides;
-    setSlide(next);
+    setSlide((currentSlide + 1) % totalSlides);
   }
 
-  // Auto slide every 5s
-  let interval = setInterval(nextSlide, 5000);
-
-  // Indicators click listener
+  let heroInterval = setInterval(nextSlide, 5000);
   slideIndicators.forEach((ind, i) => {
     ind.addEventListener('click', () => {
-      clearInterval(interval);
+      clearInterval(heroInterval);
       setSlide(i);
-      interval = setInterval(nextSlide, 5000);
+      heroInterval = setInterval(nextSlide, 5000);
     });
   });
 
-  // Tab Switcher JS logic
+  // ==========================================
+  // 2. Tab Switcher (Xe categories)
+  // ==========================================
   const tabTriggers = document.querySelectorAll('[data-tab-trigger]');
-  
   tabTriggers.forEach(btn => {
     btn.addEventListener('click', () => {
       const targetId = btn.getAttribute('data-tab-trigger');
-      
-      // Update tab buttons style
       tabTriggers.forEach(t => {
         t.classList.remove('bg-brand', 'text-white', 'shadow-premium');
         t.classList.add('text-slate-600', 'hover:text-brand');
       });
       btn.classList.add('bg-brand', 'text-white', 'shadow-premium');
       btn.classList.remove('text-slate-600', 'hover:text-brand');
-
-      // Hide all panels, show target panel
-      const allPanels = ['xe-4-7', 'xe-16', 'xe-29', 'xe-35-45'];
-      allPanels.forEach(id => {
+      ['xe-4-7', 'xe-16', 'xe-29', 'xe-35-45'].forEach(id => {
         const panel = document.getElementById(id);
         if (panel) {
-          if (id === targetId) {
-            panel.classList.remove('hidden');
-          } else {
-            panel.classList.add('hidden');
-          }
+          id === targetId ? panel.classList.remove('hidden') : panel.classList.add('hidden');
         }
       });
-
     });
   });
+
+  // ==========================================
+  // 3. Strengths Slider (mobile) — scroll-snap + bullet dots
+  // ==========================================
+  const strengthsSlider = document.getElementById('strengths-slider');
+  const strengthsDots = document.querySelectorAll('[data-strengths-dot]');
+
+  function updateStrengthsDot(index: number) {
+    strengthsDots.forEach((dot, i) => {
+      if (i === index) {
+        dot.classList.add('bg-brand', 'w-6');
+        dot.classList.remove('bg-slate-300');
+      } else {
+        dot.classList.remove('bg-brand', 'w-6');
+        dot.classList.add('bg-slate-300');
+      }
+    });
+  }
+
+  if (strengthsSlider) {
+    // Dot click → scroll to card
+    strengthsDots.forEach((dot, i) => {
+      dot.addEventListener('click', () => {
+        const cards = strengthsSlider.querySelectorAll(':scope > div');
+        if (cards[i]) {
+          (cards[i] as HTMLElement).scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        }
+        updateStrengthsDot(i);
+      });
+    });
+
+    // Scroll → update dot
+    strengthsSlider.addEventListener('scroll', () => {
+      const cards = strengthsSlider.querySelectorAll(':scope > div');
+      let closestIndex = 0;
+      let closestDist = Infinity;
+      const sliderCenter = strengthsSlider.scrollLeft + strengthsSlider.clientWidth / 2;
+      cards.forEach((card, i) => {
+        const el = card as HTMLElement;
+        const cardCenter = el.offsetLeft + el.offsetWidth / 2;
+        const dist = Math.abs(cardCenter - sliderCenter);
+        if (dist < closestDist) { closestDist = dist; closestIndex = i; }
+      });
+      updateStrengthsDot(closestIndex);
+    }, { passive: true });
+  }
+
+  // ==========================================
+  // 4. Partners Slider — scroll-snap + bullet dots (luôn hiện)
+  // ==========================================
+  const partnersSlider = document.getElementById('partners-slider');
+  const partnerDots = document.querySelectorAll('[data-partner-dot]');
+
+  function updatePartnerDot(index: number) {
+    partnerDots.forEach((dot, i) => {
+      if (i === index) {
+        dot.classList.add('bg-brand', 'w-5');
+        dot.classList.remove('bg-slate-300');
+      } else {
+        dot.classList.remove('bg-brand', 'w-5');
+        dot.classList.add('bg-slate-300');
+      }
+    });
+  }
+
+  if (partnersSlider) {
+    // Dot click → scroll to item
+    partnerDots.forEach((dot, i) => {
+      dot.addEventListener('click', () => {
+        const items = partnersSlider.querySelectorAll(':scope > div');
+        if (items[i]) {
+          (items[i] as HTMLElement).scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        }
+        updatePartnerDot(i);
+      });
+    });
+
+    // Scroll → update dot
+    partnersSlider.addEventListener('scroll', () => {
+      const items = partnersSlider.querySelectorAll(':scope > div');
+      let closestIndex = 0;
+      let closestDist = Infinity;
+      const sliderCenter = partnersSlider.scrollLeft + partnersSlider.clientWidth / 2;
+      items.forEach((item, i) => {
+        const el = item as HTMLElement;
+        const itemCenter = el.offsetLeft + el.offsetWidth / 2;
+        const dist = Math.abs(itemCenter - sliderCenter);
+        if (dist < closestDist) { closestDist = dist; closestIndex = i; }
+      });
+      updatePartnerDot(closestIndex);
+    }, { passive: true });
+  }
 </script>
