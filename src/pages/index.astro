@@ -79,25 +79,33 @@ const sliderImages = [
 ---
 
 <Layout>
-  <!-- Hero Slideshow Section — chỉ ảnh, không text overlay -->
-  <section class="relative h-[65vh] md:h-[80vh] w-full overflow-hidden bg-slate-900">
-    <div id="hero-slider" class="absolute inset-0 w-full h-full">
-      {sliderImages.map((src, index) => (
-        <div
-          class={`absolute inset-0 w-full h-full bg-cover bg-center transition-opacity duration-1000 ease-in-out ${index === 0 ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
-          style={`background-image: url(${src})`}
-        ></div>
-      ))}
-    </div>
+  <!-- Hero Slideshow Section -->
+  <!-- Mobile/tablet: giờ nguyên tỉ lệ ảnh bằng aspect-ratio; Desktop: full-height -->
+  <section class="relative w-full overflow-hidden bg-slate-900">
+    <!-- Wrapper giữ tỉ lệ ảnh trên mobile, full height trên desktop -->
+    <div class="relative w-full aspect-[4/3] sm:aspect-[16/9] md:aspect-auto md:h-[80vh]">
+      <div id="hero-slider" class="absolute inset-0 w-full h-full">
+        {sliderImages.map((src, index) => (
+          <div class={`absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out ${index === 0 ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}>
+            <img
+              src={src}
+              alt={`Banner xe du lịch Gia Huy ${index + 1}`}
+              class="w-full h-full object-contain md:object-cover object-center"
+              loading={index === 0 ? 'eager' : 'lazy'}
+            />
+          </div>
+        ))}
+      </div>
 
-    <!-- Slide Indicators -->
-    <div class="absolute bottom-6 left-0 right-0 z-20 flex justify-center gap-2">
-      {sliderImages.map((_, index) => (
-        <button
-          class={`size-2.5 rounded-full border border-white/30 transition-all duration-300 ${index === 0 ? 'bg-white w-6' : 'bg-white/40'}`}
-          data-slide={index}
-        ></button>
-      ))}
+      <!-- Slide Indicators -->
+      <div class="absolute bottom-4 left-0 right-0 z-20 flex justify-center gap-2">
+        {sliderImages.map((_, index) => (
+          <button
+            class={`size-2.5 rounded-full border border-white/40 transition-all duration-300 ${index === 0 ? 'bg-white w-6' : 'bg-white/40'}`}
+            data-slide={index}
+          ></button>
+        ))}
+      </div>
     </div>
   </section>
 
@@ -356,61 +364,50 @@ const sliderImages = [
   </section>
 
   <!-- Partner Section -->
-  <section class="py-12 bg-white border-y border-slate-100">
+  <section class="py-12 bg-white border-y border-slate-100 overflow-hidden">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
       <!-- Tiêu đề đồng bộ với các section khác -->
       <div class="text-center max-w-3xl mx-auto mb-10">
         <span class="inline-flex items-center gap-1.5 rounded-full border border-brand/20 bg-brand/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-brand">
-          <i class="fa-solid fa-handshake"></i> Hợp tác & tin dùng
+          <i class="fa-solid fa-handshake"></i> Hợp tác &amp; tin dùng
         </span>
         <h2 class="text-2xl font-extrabold text-slate-900 tracking-tight mt-3">Đối Tác &amp; Khách Hàng Tin Dùng</h2>
       </div>
 
-      <!-- Desktop: flex 5 cột hiển thị hết -->
-      <div class="hidden md:flex items-center justify-between gap-6">
-        {partners.map(p => (
-          <div class="flex-1 flex items-center justify-center">
-            {p.url ? (
-              <a href={p.url} target="_blank" rel="noopener noreferrer" title={p.name}
-                class="transition-all duration-300 hover:scale-105">
-                <img src={p.logo} alt={p.name} class="h-full w-full object-contain" />
-              </a>
-            ) : (
-              <img src={p.logo} alt={p.name} title={p.name}
-                class="h-full w-full object-contain transition-all duration-300 hover:scale-105" />
-            )}
-          </div>
-        ))}
-      </div>
-
-      <!-- Mobile: slider swipe + bullets -->
-      <div class="md:hidden relative -mx-4 px-4">
-        <div id="partners-slider" class="flex items-center gap-4 overflow-x-auto snap-x snap-mandatory no-scrollbar pb-2">
-          {partners.map(p => (
-            <div class="flex-none snap-center flex items-center justify-center w-[70vw] py-2">
+      <!-- Slider đa cột: desktop 5, tablet 4, mobile sm 3, mobile xs 2 -->
+      <div class="relative -mx-4 sm:-mx-6 lg:-mx-8">
+        <div
+          id="partners-slider"
+          class="flex overflow-x-auto snap-x snap-mandatory no-scrollbar gap-0"
+        >
+          {partners.map((p, i) => (
+            <div
+              class="flex-none snap-start w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 px-4 py-6 flex items-center justify-center"
+              data-partner-item={i}
+            >
               {p.url ? (
                 <a href={p.url} target="_blank" rel="noopener noreferrer" title={p.name}
-                  class="opacity-60 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-300">
-                  <img src={p.logo} alt={p.name} class="h-10 w-auto object-contain" />
+                  class="w-full flex items-center justify-center hover:scale-105 transition-transform duration-200">
+                  <img src={p.logo} alt={p.name} class="w-full h-auto max-h-20 object-contain" />
                 </a>
               ) : (
                 <img src={p.logo} alt={p.name} title={p.name}
-                  class="h-10 w-auto object-contain opacity-60 grayscale" />
+                  class="w-full h-auto max-h-20 object-contain hover:scale-105 transition-transform duration-200" />
               )}
             </div>
           ))}
         </div>
+      </div>
 
-        <!-- Bullet dots - chỉ hiện trên mobile -->
-        <div id="partners-dots" class="flex justify-center gap-2 mt-4">
-          {partners.map((_, i) => (
-            <button
-              class={`size-2 rounded-full transition-all duration-300 ${i === 0 ? 'bg-brand w-5' : 'bg-slate-300'}`}
-              data-partner-dot={i}
-            ></button>
-          ))}
-        </div>
+      <!-- Bullet dots -->
+      <div id="partners-dots" class="flex justify-center gap-2 mt-6">
+        {partners.map((_, i) => (
+          <button
+            class={`size-2 rounded-full transition-all duration-300 ${i === 0 ? 'bg-brand w-5' : 'bg-slate-300'}`}
+            data-partner-dot={i}
+          ></button>
+        ))}
       </div>
 
     </div>

@@ -5,9 +5,10 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    overflow-x: clip; /* Ngăn scroll ngang toàn trang nhưng không block scroll của child elements */
   }
   body {
-    @apply font-sans bg-slate-50 text-slate-800 antialiased overflow-x-hidden text-[16px] md:text-[17px] leading-relaxed;
+    @apply font-sans bg-slate-50 text-slate-800 antialiased text-[16px] md:text-[17px] leading-relaxed;
   }
   .text-xs {
     font-size: 14.5px !important;
