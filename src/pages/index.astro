@@ -80,25 +80,42 @@ const sliderImages = [
 
 <Layout>
   <!-- Hero Slideshow Section -->
-  <!-- Mobile/tablet: giờ nguyên tỉ lệ ảnh bằng aspect-ratio; Desktop: full-height -->
+  <!-- Banner slider: keep the artwork ratio so text stays visible on every viewport -->
   <section class="relative w-full overflow-hidden bg-slate-900">
-    <!-- Wrapper giữ tỉ lệ ảnh trên mobile, full height trên desktop -->
-    <div class="relative w-full aspect-[4/3] sm:aspect-[16/9] md:aspect-auto md:h-[80vh]">
-      <div id="hero-slider" class="absolute inset-0 w-full h-full">
+    <div class="group relative w-full aspect-[1920/600] min-h-[132px] max-h-[620px]">
+      <div id="hero-slider" class="flex h-full w-full snap-x snap-mandatory overflow-x-auto overscroll-x-contain scroll-smooth touch-pan-x no-scrollbar">
         {sliderImages.map((src, index) => (
-          <div class={`absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out ${index === 0 ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}>
+          <div class="relative h-full w-full flex-none snap-center">
             <img
               src={src}
               alt={`Banner xe du lịch Gia Huy ${index + 1}`}
-              class="w-full h-full object-contain md:object-cover object-center"
+              class="h-full w-full object-fill"
               loading={index === 0 ? 'eager' : 'lazy'}
+              draggable="false"
             />
           </div>
         ))}
       </div>
 
+      <button
+        type="button"
+        aria-label="Ảnh trước"
+        data-hero-arrow="prev"
+        class="absolute left-2 sm:left-5 top-1/2 z-30 grid size-9 sm:size-11 -translate-y-1/2 place-items-center rounded-full border border-white/40 bg-slate-950/35 text-white opacity-100 shadow-lg backdrop-blur-md transition-all duration-300 hover:bg-brand md:opacity-0 md:group-hover:opacity-100"
+      >
+        <i class="fa-solid fa-chevron-left text-sm"></i>
+      </button>
+      <button
+        type="button"
+        aria-label="Ảnh sau"
+        data-hero-arrow="next"
+        class="absolute right-2 sm:right-5 top-1/2 z-30 grid size-9 sm:size-11 -translate-y-1/2 place-items-center rounded-full border border-white/40 bg-slate-950/35 text-white opacity-100 shadow-lg backdrop-blur-md transition-all duration-300 hover:bg-brand md:opacity-0 md:group-hover:opacity-100"
+      >
+        <i class="fa-solid fa-chevron-right text-sm"></i>
+      </button>
+
       <!-- Slide Indicators -->
-      <div class="absolute bottom-4 left-0 right-0 z-20 flex justify-center gap-2">
+      <div class="absolute bottom-2.5 sm:bottom-4 left-0 right-0 z-20 flex justify-center gap-2">
         {sliderImages.map((_, index) => (
           <button
             class={`size-2.5 rounded-full border border-white/40 transition-all duration-300 ${index === 0 ? 'bg-white w-6' : 'bg-white/40'}`}
@@ -175,11 +192,11 @@ const sliderImages = [
       </div>
 
       <!-- Desktop: grid 3 cột | Mobile: slider có swipe + bullets -->
-      <div class="relative -mx-4 px-4 md:mx-0 md:px-0">
-        <div id="strengths-slider" class="flex md:grid md:grid-cols-3 gap-6 overflow-x-auto md:overflow-visible snap-x snap-mandatory no-scrollbar pb-4 md:pb-0">
+      <div class="group relative -mx-4 px-4 md:mx-0 md:px-0">
+        <div id="strengths-slider" class="flex md:grid md:grid-cols-3 gap-6 overflow-x-auto md:overflow-visible snap-x snap-mandatory scroll-smooth touch-pan-x no-scrollbar py-4 md:pb-0">
 
           <!-- Card 1 -->
-          <div class="glass rounded-3xl border border-slate-200/60 p-8 shadow-premium hover:shadow-glow transition-all duration-300 hover:-translate-y-1 group relative flex-none w-[85vw] sm:w-[70vw] md:w-auto snap-center">
+          <div class="glass rounded-3xl border border-slate-200/60 p-8 shadow-premium hover:shadow-glow transition-all duration-300 hover:-translate-y-1 group relative flex-none w-[85vw] sm:w-[70vw] md:w-auto snap-center overflow-hidden">
             <div class="absolute top-0 right-0 h-24 w-24 rounded-bl-full bg-brand/5 transition-transform duration-500 group-hover:scale-150 -z-10"></div>
             <span class="grid size-12 place-items-center rounded-2xl bg-brand-gradient text-white shadow-glow mb-6 text-xl">
               <i class="fa-solid fa-bolt"></i>
@@ -196,7 +213,7 @@ const sliderImages = [
           </div>
 
           <!-- Card 2 -->
-          <div class="glass rounded-3xl border border-slate-200/60 p-8 shadow-premium hover:shadow-glow transition-all duration-300 hover:-translate-y-1 group relative flex-none w-[85vw] sm:w-[70vw] md:w-auto snap-center">
+          <div class="glass rounded-3xl border border-slate-200/60 p-8 shadow-premium hover:shadow-glow transition-all duration-300 hover:-translate-y-1 group relative flex-none w-[85vw] sm:w-[70vw] md:w-auto snap-center overflow-hidden">
             <div class="absolute top-0 right-0 h-24 w-24 rounded-bl-full bg-brand-cyan/5 transition-transform duration-500 group-hover:scale-150 -z-10"></div>
             <span class="grid size-12 place-items-center rounded-2xl bg-cyan-500 text-white shadow-lg mb-6 text-xl">
               <i class="fa-solid fa-award"></i>
@@ -213,7 +230,7 @@ const sliderImages = [
           </div>
 
           <!-- Card 3 -->
-          <div class="glass rounded-3xl border border-slate-200/60 p-8 shadow-premium hover:shadow-glow transition-all duration-300 hover:-translate-y-1 group relative flex-none w-[85vw] sm:w-[70vw] md:w-auto snap-center">
+          <div class="glass rounded-3xl border border-slate-200/60 p-8 shadow-premium hover:shadow-glow transition-all duration-300 hover:-translate-y-1 group relative flex-none w-[85vw] sm:w-[70vw] md:w-auto snap-center overflow-hidden">
             <div class="absolute top-0 right-0 h-24 w-24 rounded-bl-full bg-brand-green/5 transition-transform duration-500 group-hover:scale-150 -z-10"></div>
             <span class="grid size-12 place-items-center rounded-2xl bg-emerald-500 text-white shadow-lg mb-6 text-xl">
               <i class="fa-solid fa-shield-halved"></i>
@@ -230,6 +247,23 @@ const sliderImages = [
           </div>
 
         </div>
+
+        <button
+          type="button"
+          aria-label="Lướt sang trái"
+          data-slider-prev="strengths-slider"
+          class="absolute left-2 top-1/2 z-20 grid size-10 -translate-y-1/2 place-items-center rounded-full border border-slate-200 bg-white/90 text-slate-700 opacity-100 shadow-premium backdrop-blur transition-all duration-300 hover:bg-brand hover:text-white disabled:pointer-events-none disabled:opacity-0 md:hidden"
+        >
+          <i class="fa-solid fa-chevron-left text-sm"></i>
+        </button>
+        <button
+          type="button"
+          aria-label="Lướt sang phải"
+          data-slider-next="strengths-slider"
+          class="absolute right-2 top-1/2 z-20 grid size-10 -translate-y-1/2 place-items-center rounded-full border border-slate-200 bg-white/90 text-slate-700 opacity-100 shadow-premium backdrop-blur transition-all duration-300 hover:bg-brand hover:text-white disabled:pointer-events-none disabled:opacity-0 md:hidden"
+        >
+          <i class="fa-solid fa-chevron-right text-sm"></i>
+        </button>
 
         <!-- Bullet dots cho mobile slider -->
         <div id="strengths-dots" class="flex md:hidden justify-center gap-2 mt-6">
@@ -275,35 +309,35 @@ const sliderImages = [
         {carTabs.map((tab, idx) => (
           <div
             id={tab.id}
-            class={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ${idx === 0 ? '' : 'hidden'}`}
+            class={`grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-5 lg:gap-6 ${idx === 0 ? '' : 'hidden'}`}
           >
             <!-- Card items -->
-            <div class="md:col-span-2 lg:col-span-3 mb-4">
+            <div class="col-span-2 lg:col-span-3 mb-2 sm:mb-4">
               <p class="text-sm font-semibold text-slate-500 border-l-4 border-brand pl-3">
                 {tab.description}
               </p>
             </div>
 
             {tab.cars.map(car => (
-              <div class="bg-white border border-slate-200/60 rounded-3xl p-4 shadow-sm hover:shadow-premium transition-all duration-300 group">
-                <div class="rounded-2xl overflow-hidden aspect-[4/3] bg-slate-100 mb-4 border border-slate-100 relative">
+              <div class="bg-white border border-slate-200/60 rounded-2xl sm:rounded-3xl p-2.5 sm:p-4 shadow-sm hover:shadow-premium transition-all duration-300 group">
+                <div class="rounded-xl sm:rounded-2xl overflow-hidden aspect-[4/3] bg-slate-100 mb-3 sm:mb-4 border border-slate-100 relative">
                   <img
                     src={car.image}
                     alt={car.name}
                     class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                   <!-- Category Badge overlay -->
-                  <span class="absolute top-3 left-3 bg-brand/10 border border-brand/20 backdrop-blur-md text-brand text-[10px] font-bold px-2 py-0.5 rounded-full">
+                  <span class="absolute top-2 left-2 sm:top-3 sm:left-3 bg-brand/10 border border-brand/20 backdrop-blur-md text-brand text-[9px] sm:text-[10px] font-bold px-1.5 sm:px-2 py-0.5 rounded-full">
                     {tab.label}
                   </span>
                 </div>
-                <div class="flex items-center justify-between mt-2">
-                  <div>
-                    <h4 class="font-extrabold text-slate-900 group-hover:text-brand transition-colors text-base">{car.name}</h4>
-                    <p class="text-xs text-slate-400 mt-0.5">Xe đời mới, điều hòa lạnh sâu</p>
+                <div class="flex items-start justify-between gap-2 mt-2">
+                  <div class="min-w-0">
+                    <h4 class="font-extrabold text-slate-900 group-hover:text-brand transition-colors text-sm sm:text-base leading-snug line-clamp-2">{car.name}</h4>
+                    <p class="text-[11px] sm:text-xs text-slate-400 mt-0.5 leading-snug line-clamp-1">Xe đời mới, điều hòa lạnh sâu</p>
                   </div>
-                  <a href="tel:0935373577" class="size-10 flex items-center justify-center bg-slate-100 hover:bg-brand hover:text-white rounded-xl text-slate-600 transition-all duration-300">
-                    <i class="fa-solid fa-phone"></i>
+                  <a href="tel:0935373577" class="size-8 sm:size-10 shrink-0 flex items-center justify-center bg-slate-100 hover:bg-brand hover:text-white rounded-lg sm:rounded-xl text-slate-600 transition-all duration-300">
+                    <i class="fa-solid fa-phone text-xs sm:text-base"></i>
                   </a>
                 </div>
               </div>
@@ -331,9 +365,9 @@ const sliderImages = [
         </a>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5 lg:gap-6">
         {featuredTours.map(tour => (
-          <article class="bg-white border border-slate-200/60 rounded-3xl overflow-hidden shadow-sm hover:shadow-premium transition-all duration-300 group flex flex-col justify-between">
+          <article class="bg-white border border-slate-200/60 rounded-2xl sm:rounded-3xl overflow-hidden shadow-sm hover:shadow-premium transition-all duration-300 group flex flex-col justify-between">
             <a href={`/news/${tour.category}/${tour.slug}/`} class="block overflow-hidden aspect-[16/10] bg-slate-100 border-b border-slate-100">
               <img
                 src={tour.image}
@@ -341,17 +375,17 @@ const sliderImages = [
                 class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
             </a>
-            <div class="p-5 flex-grow flex flex-col justify-between">
+            <div class="p-3 sm:p-5 flex-grow flex flex-col justify-between">
               <div>
-                <span class="text-[10px] font-bold text-brand uppercase tracking-wider">Đón Tiễn Tour</span>
-                <h3 class="text-[15px] font-extrabold text-slate-950 mt-1 line-clamp-2 hover:text-brand transition-colors">
+                <span class="text-[9px] sm:text-[10px] font-bold text-brand uppercase tracking-wider">Đón Tiễn Tour</span>
+                <h3 class="text-sm sm:text-[15px] font-extrabold text-slate-950 mt-1 line-clamp-2 hover:text-brand transition-colors leading-snug">
                   <a href={`/news/${tour.category}/${tour.slug}/`}>{tour.title}</a>
                 </h3>
-                <p class="text-xs text-slate-500 mt-2 line-clamp-2 leading-relaxed">
+                <p class="text-[11px] sm:text-xs text-slate-500 mt-1.5 sm:mt-2 line-clamp-2 leading-snug sm:leading-relaxed">
                   {tour.description}
                 </p>
               </div>
-              <div class="mt-5 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-400">
+              <div class="mt-3 sm:mt-5 pt-2 sm:pt-3 border-t border-slate-100 flex items-center justify-between gap-2 text-[10px] sm:text-[11px] text-slate-400">
                 <span><i class="fa-regular fa-clock mr-1"></i> {tour.date.split(' ')[0]}</span>
                 <span><i class="fa-regular fa-eye mr-1"></i> {tour.views}</span>
               </div>
@@ -376,10 +410,10 @@ const sliderImages = [
       </div>
 
       <!-- Slider đa cột: desktop 5, tablet 4, mobile sm 3, mobile xs 2 -->
-      <div class="relative -mx-4 sm:-mx-6 lg:-mx-8">
+      <div class="group relative -mx-4 sm:-mx-6 lg:-mx-8">
         <div
           id="partners-slider"
-          class="flex overflow-x-auto snap-x snap-mandatory no-scrollbar gap-0"
+          class="flex overflow-x-auto snap-x snap-mandatory scroll-smooth touch-pan-x no-scrollbar gap-0"
         >
           {partners.map((p, i) => (
             <div
@@ -398,6 +432,23 @@ const sliderImages = [
             </div>
           ))}
         </div>
+
+        <button
+          type="button"
+          aria-label="Lướt đối tác sang trái"
+          data-slider-prev="partners-slider"
+          class="absolute left-2 sm:left-4 top-1/2 z-20 grid size-10 -translate-y-1/2 place-items-center rounded-full border border-slate-200 bg-white/90 text-slate-700 opacity-100 shadow-premium backdrop-blur transition-all duration-300 hover:bg-brand hover:text-white disabled:pointer-events-none disabled:opacity-0 md:opacity-0 md:group-hover:opacity-100"
+        >
+          <i class="fa-solid fa-chevron-left text-sm"></i>
+        </button>
+        <button
+          type="button"
+          aria-label="Lướt đối tác sang phải"
+          data-slider-next="partners-slider"
+          class="absolute right-2 sm:right-4 top-1/2 z-20 grid size-10 -translate-y-1/2 place-items-center rounded-full border border-slate-200 bg-white/90 text-slate-700 opacity-100 shadow-premium backdrop-blur transition-all duration-300 hover:bg-brand hover:text-white disabled:pointer-events-none disabled:opacity-0 md:opacity-0 md:group-hover:opacity-100"
+        >
+          <i class="fa-solid fa-chevron-right text-sm"></i>
+        </button>
       </div>
 
       <!-- Bullet dots -->
@@ -419,20 +470,36 @@ const sliderImages = [
   // 1. Hero Slideshow
   // ==========================================
   let currentSlide = 0;
+  const heroSlider = document.getElementById('hero-slider') as HTMLElement | null;
   const slides = document.querySelectorAll('#hero-slider > div');
   const slideIndicators = document.querySelectorAll('button[data-slide]');
+  const heroArrows = document.querySelectorAll('[data-hero-arrow]');
   const totalSlides = slides.length;
 
-  function setSlide(index: number) {
-    slides[currentSlide].classList.remove('opacity-100', 'z-10');
-    slides[currentSlide].classList.add('opacity-0', 'z-0');
-    slideIndicators[currentSlide].classList.remove('bg-white', 'w-6');
-    slideIndicators[currentSlide].classList.add('bg-white/40');
+  function updateHeroIndicators(index: number) {
+    slideIndicators.forEach((indicator, i) => {
+      if (i === index) {
+        indicator.classList.add('bg-white', 'w-6');
+        indicator.classList.remove('bg-white/40');
+      } else {
+        indicator.classList.remove('bg-white', 'w-6');
+        indicator.classList.add('bg-white/40');
+      }
+    });
+  }
+
+  function setSlide(index: number, shouldScroll = true) {
+    if (!totalSlides) return;
+    index = (index + totalSlides) % totalSlides;
     currentSlide = index;
-    slides[currentSlide].classList.remove('opacity-0', 'z-0');
-    slides[currentSlide].classList.add('opacity-100', 'z-10');
-    slideIndicators[currentSlide].classList.remove('bg-white/40');
-    slideIndicators[currentSlide].classList.add('bg-white', 'w-6');
+    updateHeroIndicators(currentSlide);
+
+    if (shouldScroll && heroSlider) {
+      heroSlider.scrollTo({
+        left: heroSlider.clientWidth * currentSlide,
+        behavior: 'smooth'
+      });
+    }
   }
 
   function nextSlide() {
@@ -447,6 +514,57 @@ const sliderImages = [
       heroInterval = setInterval(nextSlide, 5000);
     });
   });
+  heroArrows.forEach(btn => {
+    btn.addEventListener('click', () => {
+      clearInterval(heroInterval);
+      const direction = btn.getAttribute('data-hero-arrow') === 'prev' ? -1 : 1;
+      setSlide(currentSlide + direction);
+      heroInterval = setInterval(nextSlide, 5000);
+    });
+  });
+  if (heroSlider) {
+    let isHeroDragging = false;
+    let heroDragStartX = 0;
+    let heroDragStartScroll = 0;
+
+    heroSlider.addEventListener('scroll', () => {
+      const nextIndex = Math.round(heroSlider.scrollLeft / heroSlider.clientWidth);
+      if (nextIndex !== currentSlide) {
+        setSlide(nextIndex, false);
+      }
+    }, { passive: true });
+
+    heroSlider.addEventListener('pointerdown', (event) => {
+      if (event.pointerType === 'mouse' && event.button !== 0) return;
+      clearInterval(heroInterval);
+      isHeroDragging = true;
+      heroDragStartX = event.clientX;
+      heroDragStartScroll = heroSlider.scrollLeft;
+      heroSlider.classList.remove('scroll-smooth');
+      heroSlider.setPointerCapture(event.pointerId);
+    });
+
+    heroSlider.addEventListener('pointermove', (event) => {
+      if (!isHeroDragging) return;
+      heroSlider.scrollLeft = heroDragStartScroll - (event.clientX - heroDragStartX);
+    });
+
+    function finishHeroDrag(event: PointerEvent) {
+      if (!isHeroDragging) return;
+      isHeroDragging = false;
+      heroSlider.classList.add('scroll-smooth');
+      const nextIndex = Math.round(heroSlider.scrollLeft / heroSlider.clientWidth);
+      setSlide(nextIndex);
+      if (heroSlider.hasPointerCapture(event.pointerId)) {
+        heroSlider.releasePointerCapture(event.pointerId);
+      }
+      heroInterval = setInterval(nextSlide, 5000);
+    }
+
+    heroSlider.addEventListener('pointerup', finishHeroDrag);
+    heroSlider.addEventListener('pointercancel', finishHeroDrag);
+    window.addEventListener('resize', () => setSlide(currentSlide, false));
+  }
 
   // ==========================================
   // 2. Tab Switcher (Xe categories)
@@ -476,6 +594,63 @@ const sliderImages = [
   const strengthsSlider = document.getElementById('strengths-slider');
   const strengthsDots = document.querySelectorAll('[data-strengths-dot]');
 
+  function getSliderItems(slider: HTMLElement) {
+    return Array.from(slider.querySelectorAll(':scope > div')) as HTMLElement[];
+  }
+
+  function getClosestSliderIndex(slider: HTMLElement, items: HTMLElement[]) {
+    let closestIndex = 0;
+    let closestDist = Infinity;
+    const sliderCenter = slider.scrollLeft + slider.clientWidth / 2;
+
+    items.forEach((item, i) => {
+      const itemCenter = item.offsetLeft + item.offsetWidth / 2;
+      const dist = Math.abs(itemCenter - sliderCenter);
+      if (dist < closestDist) {
+        closestDist = dist;
+        closestIndex = i;
+      }
+    });
+
+    return closestIndex;
+  }
+
+  function scrollToSliderItem(slider: HTMLElement, index: number) {
+    const items = getSliderItems(slider);
+    const target = items[Math.max(0, Math.min(index, items.length - 1))];
+    if (!target) return;
+
+    const left = target.offsetLeft - (slider.clientWidth - target.offsetWidth) / 2;
+    slider.scrollTo({ left, behavior: 'smooth' });
+  }
+
+  function updateSliderArrowState(slider: HTMLElement) {
+    const maxScroll = slider.scrollWidth - slider.clientWidth;
+    const prev = document.querySelector(`[data-slider-prev="${slider.id}"]`) as HTMLButtonElement | null;
+    const next = document.querySelector(`[data-slider-next="${slider.id}"]`) as HTMLButtonElement | null;
+
+    if (prev) prev.disabled = slider.scrollLeft <= 2;
+    if (next) next.disabled = maxScroll <= 2 || slider.scrollLeft >= maxScroll - 2;
+  }
+
+  function bindSliderArrows(slider: HTMLElement) {
+    const prev = document.querySelector(`[data-slider-prev="${slider.id}"]`);
+    const next = document.querySelector(`[data-slider-next="${slider.id}"]`);
+
+    prev?.addEventListener('click', () => {
+      const items = getSliderItems(slider);
+      scrollToSliderItem(slider, getClosestSliderIndex(slider, items) - 1);
+    });
+
+    next?.addEventListener('click', () => {
+      const items = getSliderItems(slider);
+      scrollToSliderItem(slider, getClosestSliderIndex(slider, items) + 1);
+    });
+
+    updateSliderArrowState(slider);
+    window.addEventListener('resize', () => updateSliderArrowState(slider));
+  }
+
   function updateStrengthsDot(index: number) {
     strengthsDots.forEach((dot, i) => {
       if (i === index) {
@@ -489,30 +664,22 @@ const sliderImages = [
   }
 
   if (strengthsSlider) {
+    const strengthsEl = strengthsSlider as HTMLElement;
+    bindSliderArrows(strengthsEl);
+
     // Dot click → scroll to card
     strengthsDots.forEach((dot, i) => {
       dot.addEventListener('click', () => {
-        const cards = strengthsSlider.querySelectorAll(':scope > div');
-        if (cards[i]) {
-          (cards[i] as HTMLElement).scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-        }
+        scrollToSliderItem(strengthsEl, i);
         updateStrengthsDot(i);
       });
     });
 
     // Scroll → update dot
     strengthsSlider.addEventListener('scroll', () => {
-      const cards = strengthsSlider.querySelectorAll(':scope > div');
-      let closestIndex = 0;
-      let closestDist = Infinity;
-      const sliderCenter = strengthsSlider.scrollLeft + strengthsSlider.clientWidth / 2;
-      cards.forEach((card, i) => {
-        const el = card as HTMLElement;
-        const cardCenter = el.offsetLeft + el.offsetWidth / 2;
-        const dist = Math.abs(cardCenter - sliderCenter);
-        if (dist < closestDist) { closestDist = dist; closestIndex = i; }
-      });
-      updateStrengthsDot(closestIndex);
+      const cards = getSliderItems(strengthsEl);
+      updateStrengthsDot(getClosestSliderIndex(strengthsEl, cards));
+      updateSliderArrowState(strengthsEl);
     }, { passive: true });
   }
 
@@ -535,30 +702,22 @@ const sliderImages = [
   }
 
   if (partnersSlider) {
+    const partnersEl = partnersSlider as HTMLElement;
+    bindSliderArrows(partnersEl);
+
     // Dot click → scroll to item
     partnerDots.forEach((dot, i) => {
       dot.addEventListener('click', () => {
-        const items = partnersSlider.querySelectorAll(':scope > div');
-        if (items[i]) {
-          (items[i] as HTMLElement).scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-        }
+        scrollToSliderItem(partnersEl, i);
         updatePartnerDot(i);
       });
     });
 
     // Scroll → update dot
     partnersSlider.addEventListener('scroll', () => {
-      const items = partnersSlider.querySelectorAll(':scope > div');
-      let closestIndex = 0;
-      let closestDist = Infinity;
-      const sliderCenter = partnersSlider.scrollLeft + partnersSlider.clientWidth / 2;
-      items.forEach((item, i) => {
-        const el = item as HTMLElement;
-        const itemCenter = el.offsetLeft + el.offsetWidth / 2;
-        const dist = Math.abs(itemCenter - sliderCenter);
-        if (dist < closestDist) { closestDist = dist; closestIndex = i; }
-      });
-      updatePartnerDot(closestIndex);
+      const items = getSliderItems(partnersEl);
+      updatePartnerDot(getClosestSliderIndex(partnersEl, items));
+      updateSliderArrowState(partnersEl);
     }, { passive: true });
   }
 </script>
