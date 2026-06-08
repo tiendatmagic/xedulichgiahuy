@@ -81,7 +81,7 @@ const sliderImages = [
 <Layout>
   <!-- Hero Slideshow Section -->
   <!-- Banner slider: keep the artwork ratio so text stays visible on every viewport -->
-  <section class="relative w-full overflow-hidden bg-slate-900">
+  <section id="top" class="relative w-full overflow-hidden bg-slate-900 scroll-mt-24">
     <div class="group relative w-full aspect-[1920/600] min-h-[132px] max-h-[620px]">
       <div id="hero-slider" class="flex h-full w-full snap-x snap-mandatory overflow-x-auto overscroll-x-contain scroll-smooth touch-pan-x no-scrollbar">
         {sliderImages.map((src, index) => (
@@ -127,7 +127,7 @@ const sliderImages = [
   </section>
 
   <!-- Quick Intro & Banner -->
-  <section class="py-16 md:py-24 bg-white relative overflow-hidden">
+  <section id="gioi-thieu" class="py-16 md:py-24 bg-white relative overflow-hidden scroll-mt-24">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
         <!-- Text col - 6 cols -->
@@ -178,7 +178,7 @@ const sliderImages = [
   </section>
 
   <!-- Core Strengths Section -->
-  <section class="py-16 md:py-24 bg-slate-50 relative">
+  <section id="cam-ket" class="py-16 md:py-24 bg-slate-50 relative scroll-mt-24">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
 
       <div class="text-center max-w-3xl mx-auto mb-12">
@@ -277,7 +277,7 @@ const sliderImages = [
   </section>
 
   <!-- Car Category Tabs Rates Section -->
-  <section id="car-rates" class="py-16 md:py-24 bg-white relative overflow-hidden">
+  <section id="car-rates" class="py-16 md:py-24 bg-white relative overflow-hidden scroll-mt-24">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
 
       <div class="text-center max-w-3xl mx-auto mb-12">
@@ -327,7 +327,7 @@ const sliderImages = [
                     class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                   <!-- Category Badge overlay -->
-                  <span class="absolute top-2 left-2 sm:top-3 sm:left-3 bg-brand/10 border border-brand/20 backdrop-blur-md text-brand text-[9px] sm:text-[10px] font-bold px-1.5 sm:px-2 py-0.5 rounded-full">
+                  <span class="absolute top-2 left-2 sm:top-3 sm:left-3 bg-black/10 border backdrop-blur-md text-white text-[9px] sm:text-[10px] font-bold px-1.5 sm:px-2 py-0.5 rounded-full">
                     {tab.label}
                   </span>
                 </div>
@@ -350,7 +350,7 @@ const sliderImages = [
   </section>
 
   <!-- Featured Tours / Destination (Du lịch Nha Trang) -->
-  <section class="py-16 md:py-24 bg-slate-50 relative overflow-hidden">
+  <section id="tin-tuc" class="py-16 md:py-24 bg-slate-50 relative overflow-hidden scroll-mt-24">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
 
       <div class="flex flex-col md:flex-row items-center justify-between gap-6 mb-12">
