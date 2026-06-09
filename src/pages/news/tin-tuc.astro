@@ -18,7 +18,7 @@ const categories = [
 ];
 ---
 
-<Layout 
+<Layout
   title={`${categoryLabel} - Xe Du Lịch Gia Huy Nha Trang`}
   description={`Cập nhật các tin tức mới nhất về du lịch Khánh Hòa, cẩm nang đi tour du lịch Nha Trang, cự ly, kinh nghiệm đặt xe Gia Huy.`}
 >
@@ -37,7 +37,7 @@ const categories = [
   <!-- Content Section -->
   <section class="py-12 bg-white relative">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      
+
       <!-- Breadcrumb nav -->
       <nav class="flex items-center gap-2 text-xs text-slate-400 font-medium mb-8">
         <a href="/" class="hover:text-brand transition-colors"><i class="fa-solid fa-house"></i> Trang chủ</a>
@@ -49,17 +49,17 @@ const categories = [
 
       <!-- Grid layout: Sidebar + Main content -->
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-        
+
         <!-- Main content list - 8 cols -->
         <div class="lg:col-span-8 space-y-6">
           {posts.map((post) => (
             <article class="glass rounded-3xl border border-slate-200/60 p-4 md:p-6 shadow-sm hover:shadow-premium transition-all duration-300 group grid grid-cols-1 sm:grid-cols-12 gap-6 items-center">
-              
+
               <!-- Thumbnail -->
               <a href={`/news/${post.category}/${post.slug}/`} class="sm:col-span-5 rounded-2xl overflow-hidden aspect-[4/3] bg-slate-100 border border-slate-100 block">
-                <img 
-                  src={post.image} 
-                  alt={post.title} 
+                <img
+                  src={post.image}
+                  alt={post.title}
                   class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
               </a>
@@ -77,7 +77,7 @@ const categories = [
                     {post.description}
                   </p>
                 </div>
-                
+
                 <div class="flex items-center justify-between text-[11px] text-slate-400 border-t border-slate-100 pt-3 mt-2">
                   <div class="flex items-center gap-3">
                     <span><i class="fa-regular fa-clock mr-1"></i> {post.date.split(' ')[0]}</span>
@@ -95,7 +95,7 @@ const categories = [
 
         <!-- Sidebar - 4 cols -->
         <aside class="lg:col-span-4 space-y-8">
-          
+
           <!-- Category list block -->
           <div class="glass border border-slate-200/60 rounded-3xl p-6 shadow-sm">
             <h4 class="text-base font-extrabold text-slate-950 pb-3 border-b border-slate-100 mb-4 flex items-center gap-2">
@@ -103,11 +103,11 @@ const categories = [
             </h4>
             <div class="flex flex-col gap-2">
               {categories.map((cat) => (
-                <a 
-                  href={cat.path} 
+                <a
+                  href={cat.path}
                   class={`flex items-center justify-between px-4 py-3 rounded-xl text-sm font-semibold transition-all duration-300 ${
-                    cat.path.includes(category) 
-                      ? 'bg-brand text-white shadow-premium' 
+                    cat.path.includes(category)
+                      ? 'bg-brand text-white shadow-premium'
                       : 'text-slate-600 hover:text-brand hover:bg-slate-50'
                   }`}
                 >
@@ -121,15 +121,15 @@ const categories = [
           <!-- Hot posts list block -->
           <div class="glass border border-slate-200/60 rounded-3xl p-6 shadow-sm">
             <h4 class="text-base font-extrabold text-slate-950 pb-3 border-b border-slate-100 mb-4 flex items-center gap-2">
-              <i class="fa-solid fa-fire text-brand-orange animate-pulse"></i> Xem nhiều nhất
+              <i class="fa-solid fa-fire text-brand-yellow animate-pulse"></i> Xem nhiều nhất
             </h4>
             <div class="flex flex-col gap-4">
               {popularPosts.map((post) => (
                 <div class="flex items-center gap-3 group">
                   <a href={`/news/${post.category}/${post.slug}/`} class="size-16 rounded-xl overflow-hidden bg-slate-100 border border-slate-100 shrink-0 block">
-                    <img 
-                      src={post.image} 
-                      alt={post.title} 
+                    <img
+                      src={post.image}
+                      alt={post.title}
                       class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                     />
                   </a>

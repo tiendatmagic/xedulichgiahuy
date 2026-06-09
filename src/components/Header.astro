@@ -81,7 +81,7 @@ const navItems = [
         <!-- Hotline CTA (Desktop) -->
         <a
           href="tel:0935373577"
-          class="hidden md:inline-flex items-center gap-2 bg-white text-brand hover:bg-brand-orange hover:text-white text-sm font-bold px-5 py-2.5 rounded-xl border border-white hover:border-brand-orange transition-all duration-300 shadow-md"
+          class="hidden md:inline-flex items-center gap-2 bg-white text-brand hover:bg-brand-yellow hover:text-white text-sm font-bold px-5 py-2.5 rounded-xl border border-white hover:border-brand-yellow transition-all duration-300 shadow-md"
         >
           <i class="fa-solid fa-phone animate-pulse"></i>
           <span>Đặt Xe ngay</span>
@@ -174,7 +174,9 @@ const navItems = [
   const drawerOverlay = document.getElementById("drawer-overlay");
   const drawerMenu = document.getElementById("drawer-menu");
   const mainHeader = document.getElementById("main-header");
-  const desktopLinks = document.querySelectorAll("nav.hidden.xl\\:flex [data-nav-link]");
+  const desktopLinks = document.querySelectorAll(
+    "nav.hidden.xl\\:flex [data-nav-link]",
+  );
   const mobileLinks = document.querySelectorAll("#drawer-menu [data-nav-link]");
   const allNavLinks = document.querySelectorAll("[data-nav-link]");
   const isHomePage =
@@ -250,7 +252,9 @@ const navItems = [
     let activeId = sectionIds[0];
     const offset = 120;
 
-    const isAtBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 100;
+    const isAtBottom =
+      window.innerHeight + window.scrollY >=
+      document.documentElement.scrollHeight - 100;
 
     if (isAtBottom) {
       activeId = "lien-he";
