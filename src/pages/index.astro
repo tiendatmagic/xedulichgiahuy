@@ -11,53 +11,40 @@ const carTabs = [
     id: 'xe-nha-trang-1',
     label: 'Xe Nha Trang',
     cars: [
-      { image: '/uploads/photos/thumbs/photos_300x300-75-a47a0e6d215577ca386e4b9e0137d12b.jpg' },
       { image: '/uploads/photos/thumbs/photos_300x300-74-4a2d2dae466973e57dbd89fb8782337b.jpg' },
       { image: '/uploads/photos/thumbs/photos_300x300-73-e1e92381f8cdf6119286b6d42b6ac219.jpg' },
       { image: '/uploads/photos/thumbs/photos_300x300-72-547957875627f93d2defe0f29fd1d75b.jpg' },
       { image: '/uploads/photos/thumbs/photos_300x300-76-48f31ebac6c5629598da39fa60f0b88d.jpg' },
-      { image: '/uploads/photos/thumbs/photos_300x300-77-d3d0dbd2c51c2903c36cacbff375ad4d.jpg' }
     ]
   },
   {
     id: 'xe-nha-trang-2',
     label: 'Xe Nha Trang',
     cars: [
-      { image: '/uploads/photos/thumbs/photos_300x300-70-1d5b0ac6aa01566b3e03102756913827.jpg' },
       { image: '/uploads/photos/thumbs/photos_300x300-69-516f356e5f7d20204ce31537aa78b16f.jpg' },
       { image: '/uploads/photos/thumbs/photos_300x300-68-94a6d63335e5128afcce23f1ee912d51.jpg' },
       { image: '/uploads/photos/thumbs/photos_300x300-67-4cd485dd3603caa984c7c9206f0fe909.jpg' },
-      { image: '/uploads/photos/thumbs/photos_300x300-66-9b3a10d7e66356e574e7a38ba00918d8.jpg' },
-      { image: '/uploads/photos/thumbs/photos_300x300-65-26ab11d9799809c18578958803578445.jpg' },
-      { image: '/uploads/photos/thumbs/photos_300x300-64-0c584f1155c7801b2c3347370c9b569d.jpg' }
+      { image: '/uploads/photos/thumbs/photos_300x300-66-9b3a10d7e66356e574e7a38ba00918d8.jpg' }
     ]
   },
   {
     id: 'xe-gia-huy-1',
     label: 'Xe Gia Huy',
     cars: [
-      { image: '/uploads/photos/thumbs/photos_300x300-45-b2e9a0c8014582f1440804d18cb85a20.jpg' },
       { image: '/uploads/photos/thumbs/photos_300x300-43-456c4b99e0c2a163588362ec5e8bb37c.jpg' },
       { image: '/uploads/photos/thumbs/photos_300x300-44-f30da1a7c0bb3ea16269264144efb6b1.jpg' },
       { image: '/uploads/photos/thumbs/photos_300x300-48-e541980b9be87bde52720294c545811a.jpg' },
-      { image: '/uploads/photos/thumbs/photos_300x300-47-d975a13d13fbf69e21189496edc25480.jpg' },
-      { image: '/uploads/photos/thumbs/photos_300x300-46-b7930e7f6c5eef54437cb25ae365be9b.png' },
-      { image: '/uploads/photos/thumbs/photos_300x300-49-abb51978c78cf2f58323365554b2ba88.jpg' }
+      { image: '/uploads/photos/thumbs/photos_300x300-47-d975a13d13fbf69e21189496edc25480.jpg' }
     ]
   },
   {
     id: 'xe-gia-huy-2',
     label: 'Xe Gia Huy',
     cars: [
-      { image: '/uploads/photos/thumbs/photos_300x300-42-a4da69c764ded6c0d400f5afe77188bb.jpg' },
       { image: '/uploads/photos/thumbs/photos_300x300-41-59949b56fdd3825730bcd9099ec301c4.jpg' },
       { image: '/uploads/photos/thumbs/photos_300x300-34-472658c83315e469342b0c760488a6ba.jpg' },
       { image: '/uploads/photos/thumbs/photos_300x300-35-1628f348053aacb9bfbaa88a58b35ce5.jpg' },
       { image: '/uploads/photos/thumbs/photos_300x300-36-6fa546343b2342e4f5f4eceb700e8b56.jpg' },
-      { image: '/uploads/photos/thumbs/photos_300x300-37-5df52f9b7a9762ffe2c366e6af660ae4.jpg' },
-      { image: '/uploads/photos/thumbs/photos_300x300-38-da88cd3569a6f80efaad879eb5b54e2d.jpg' },
-      { image: '/uploads/photos/thumbs/photos_300x300-39-5c3f63dd0a6c0ecd2452aa1061e51456.jpg' },
-      { image: '/uploads/photos/thumbs/photos_300x300-40-569e08a5c2d438c24b25dc1d7fb938b2.jpg' }
     ]
   }
 ];
@@ -314,7 +301,7 @@ const sliderImages = [
         {carTabs.map((tab, idx) => (
           <div
             id={tab.id}
-            class={`grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-5 lg:gap-6 ${idx === 0 ? '' : 'hidden'}`}
+            class={`grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-5 lg:gap-6 ${idx === 0 ? '' : 'hidden'}`}
           >
 
             {tab.cars.map(car => (
