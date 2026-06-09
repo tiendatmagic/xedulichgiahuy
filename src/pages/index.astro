@@ -473,8 +473,46 @@ const sliderImages = [
         ))}
       </div>
 
+  <!-- Lightbox Modal -->
+  <div
+    id="lightbox-modal"
+    class="fixed inset-0 z-[9999] bg-slate-950/95 opacity-0 pointer-events-none flex items-center justify-center transition-opacity duration-300 p-4 sm:p-6"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Phóng to hình ảnh xe"
+  >
+    <button
+      id="lightbox-close"
+      class="absolute top-4 right-4 sm:top-6 sm:right-6 size-12 flex items-center justify-center rounded-full bg-white/10 text-white hover:bg-white/25 transition-all text-2xl border border-white/20 backdrop-blur-md z-[10010] cursor-pointer"
+      aria-label="Đóng"
+    >
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+
+    <button
+      id="lightbox-prev"
+      class="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 size-12 flex items-center justify-center rounded-full bg-white/10 text-white hover:bg-white/25 transition-all text-xl border border-white/20 backdrop-blur-md z-[10010] cursor-pointer"
+      aria-label="Ảnh trước"
+    >
+      <i class="fa-solid fa-chevron-left"></i>
+    </button>
+    <button
+      id="lightbox-next"
+      class="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 size-12 flex items-center justify-center rounded-full bg-white/10 text-white hover:bg-white/25 transition-all text-xl border border-white/20 backdrop-blur-md z-[10010] cursor-pointer"
+      aria-label="Ảnh sau"
+    >
+      <i class="fa-solid fa-chevron-right"></i>
+    </button>
+
+    <div class="relative max-w-[92vw] md:max-w-5xl max-h-[85vh] w-full flex items-center justify-center select-none">
+      <img
+        id="lightbox-img"
+        src=""
+        alt="Xe du lịch Gia Huy"
+        class="w-full max-w-4xl h-auto max-h-[75vh] object-contain rounded-xl sm:rounded-2xl shadow-2xl transition-opacity duration-300"
+      />
     </div>
-  </section>
+  </div>
 </Layout>
 
 <script>
