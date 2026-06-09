@@ -11,10 +11,10 @@ const carTabs = [
     id: 'xe-nha-trang-1',
     label: 'Xe Nha Trang',
     cars: [
-      { image: '/uploads/photos/thumbs/photos_300x300-72-547957875627f93d2defe0f29fd1d75b.jpg' },
-      { image: '/uploads/photos/thumbs/photos_300x300-73-e1e92381f8cdf6119286b6d42b6ac219.jpg' },
-      { image: '/uploads/photos/thumbs/photos_300x300-74-4a2d2dae466973e57dbd89fb8782337b.jpg' },
       { image: '/uploads/photos/thumbs/photos_300x300-75-a47a0e6d215577ca386e4b9e0137d12b.jpg' },
+      { image: '/uploads/photos/thumbs/photos_300x300-74-4a2d2dae466973e57dbd89fb8782337b.jpg' },
+      { image: '/uploads/photos/thumbs/photos_300x300-73-e1e92381f8cdf6119286b6d42b6ac219.jpg' },
+      { image: '/uploads/photos/thumbs/photos_300x300-72-547957875627f93d2defe0f29fd1d75b.jpg' },
       { image: '/uploads/photos/thumbs/photos_300x300-76-48f31ebac6c5629598da39fa60f0b88d.jpg' },
       { image: '/uploads/photos/thumbs/photos_300x300-77-d3d0dbd2c51c2903c36cacbff375ad4d.jpg' }
     ]
@@ -23,13 +23,13 @@ const carTabs = [
     id: 'xe-nha-trang-2',
     label: 'Xe Nha Trang',
     cars: [
-      { image: '/uploads/photos/thumbs/photos_300x300-64-0c584f1155c7801b2c3347370c9b569d.jpg' },
-      { image: '/uploads/photos/thumbs/photos_300x300-65-26ab11d9799809c18578958803578445.jpg' },
-      { image: '/uploads/photos/thumbs/photos_300x300-66-9b3a10d7e66356e574e7a38ba00918d8.jpg' },
-      { image: '/uploads/photos/thumbs/photos_300x300-67-4cd485dd3603caa984c7c9206f0fe909.jpg' },
-      { image: '/uploads/photos/thumbs/photos_300x300-68-94a6d63335e5128afcce23f1ee912d51.jpg' },
+      { image: '/uploads/photos/thumbs/photos_300x300-70-1d5b0ac6aa01566b3e03102756913827.jpg' },
       { image: '/uploads/photos/thumbs/photos_300x300-69-516f356e5f7d20204ce31537aa78b16f.jpg' },
-      { image: '/uploads/photos/thumbs/photos_300x300-70-1d5b0ac6aa01566b3e03102756913827.jpg' }
+      { image: '/uploads/photos/thumbs/photos_300x300-68-94a6d63335e5128afcce23f1ee912d51.jpg' },
+      { image: '/uploads/photos/thumbs/photos_300x300-67-4cd485dd3603caa984c7c9206f0fe909.jpg' },
+      { image: '/uploads/photos/thumbs/photos_300x300-66-9b3a10d7e66356e574e7a38ba00918d8.jpg' },
+      { image: '/uploads/photos/thumbs/photos_300x300-65-26ab11d9799809c18578958803578445.jpg' },
+      { image: '/uploads/photos/thumbs/photos_300x300-64-0c584f1155c7801b2c3347370c9b569d.jpg' }
     ]
   },
   {
@@ -79,7 +79,11 @@ const sliderImages = [
 ];
 ---
 
-<Layout>
+<Layout
+  title="Cho Thuê Xe Du Lịch Nha Trang Từ 4 - 45 Chỗ Giá Rẻ | Xe Gia Huy"
+  description="Dịch vụ cho thuê xe du lịch Nha Trang từ 4, 7, 16, 29, 35 đến 45 chỗ đời mới, giá tốt nhất thị trường. Hotline 24/7: 0935.37.3577. Tài xế kinh nghiệm, an toàn."
+  keywords="xe du lịch nha trang, thuê xe du lịch nha trang, cho thuê xe nha trang, thuê xe gia huy, thuê xe nha trang giá rẻ, thuê xe 4-45 chỗ nha trang"
+>
   <!-- Hero Slideshow Section -->
   <!-- Banner slider: keep the artwork ratio so text stays visible on every viewport -->
   <section id="top" class="relative w-full overflow-hidden bg-slate-900 scroll-mt-24">
@@ -186,8 +190,8 @@ const sliderImages = [
         <span class="inline-flex items-center gap-1.5 rounded-full border border-brand/20 bg-brand/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-brand">
           <i class="fa-solid fa-star text-brand-yellow animate-spin [animation-duration:6s]"></i> Tại sao nên chọn chúng tôi
         </span>
-        <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight mt-3 mb-4">Cam Kết Chất Lượng Vượt Trội</h2>
-        <p class="text-slate-500 text-sm md:text-base leading-relaxed">
+        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight mt-3 mb-4">Cam Kết Chất Lượng Vượt Trội</h2>
+        <p class="text-slate-500 text-sm sm:text-base leading-relaxed">
           Chúng tôi xây dựng uy tín dựa trên sự hài lòng và trải nghiệm di chuyển an toàn của mọi khách hàng.
         </p>
       </div>
@@ -202,7 +206,7 @@ const sliderImages = [
             <span class="grid size-12 place-items-center rounded-2xl bg-brand-gradient text-white shadow-glow mb-6 text-xl">
               <i class="fa-solid fa-bolt"></i>
             </span>
-            <h3 class="text-lg font-bold text-slate-900 mb-3">Nhanh chóng</h3>
+            <h3 class="text-lg sm:text-xl font-bold text-slate-900 mb-3">Nhanh chóng</h3>
             <p class="text-sm md:text-base text-slate-500 mb-5 leading-relaxed">
               Tiếp nhận yêu cầu qua điện thoại, zalo, website nhanh chóng. Tiến hành báo giá tối ưu và tư vấn lộ trình phù hợp ngay sau vài phút.
             </p>
@@ -219,7 +223,7 @@ const sliderImages = [
             <span class="grid size-12 place-items-center rounded-2xl bg-cyan-500 text-white shadow-lg mb-6 text-xl">
               <i class="fa-solid fa-award"></i>
             </span>
-            <h3 class="text-lg font-bold text-slate-900 mb-3">Kinh nghiệm</h3>
+            <h3 class="text-lg sm:text-xl font-bold text-slate-900 mb-3">Kinh nghiệm</h3>
             <p class="text-sm md:text-base text-slate-500 mb-5 leading-relaxed">
               Hơn 10 năm hoạt động trong ngành vận tải du lịch tại Nha Trang, sở hữu dàn xe đời mới và đội ngũ tài xế chuyên chạy đường dài đèo dốc an toàn.
             </p>
@@ -236,7 +240,7 @@ const sliderImages = [
             <span class="grid size-12 place-items-center rounded-2xl bg-emerald-500 text-white shadow-lg mb-6 text-xl">
               <i class="fa-solid fa-shield-halved"></i>
             </span>
-            <h3 class="text-lg font-bold text-slate-900 mb-3">Chuyên nghiệp</h3>
+            <h3 class="text-lg sm:text-xl font-bold text-slate-900 mb-3">Chuyên nghiệp</h3>
             <p class="text-sm md:text-base text-slate-500 mb-5 leading-relaxed">
               Luôn tuân thủ lịch trình và thời gian của khách hàng, đảm bảo an toàn giao thông và ứng biến xử lý mọi vấn đề linh hoạt.
             </p>
@@ -343,55 +347,16 @@ const sliderImages = [
       </div>
 
       <!-- Xem tất cả Button -->
-      <div class="flex justify-center mt-12">
+      <!-- <div class="flex justify-center mt-12">
         <a
           href="/news/dich-vu/"
           class="inline-flex items-center justify-center bg-brand hover:bg-brand-orange hover:scale-105 text-white font-bold px-8 py-3.5 rounded-xl shadow-premium hover:shadow-glow transition-all duration-300 text-base"
         >
           XEM TẤT CẢ
         </a>
-      </div>
+      </div> -->
 
-      <!-- Lightbox Modal -->
-      <div
-        id="lightbox-modal"
-        class="fixed inset-0 z-[1000] bg-slate-950/95 opacity-0 pointer-events-none flex items-center justify-center transition-opacity duration-300 p-4 sm:p-6"
-        role="dialog"
-        aria-modal="true"
-        aria-label="Phóng to hình ảnh xe"
-      >
-        <button
-          id="lightbox-close"
-          class="absolute top-4 right-4 sm:top-6 sm:right-6 size-12 flex items-center justify-center rounded-full bg-white/10 text-white hover:bg-white/25 transition-all text-2xl border border-white/20 backdrop-blur-md z-[1010] cursor-pointer"
-          aria-label="Đóng"
-        >
-          <i class="fa-solid fa-xmark"></i>
-        </button>
 
-        <button
-          id="lightbox-prev"
-          class="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 size-12 flex items-center justify-center rounded-full bg-white/10 text-white hover:bg-white/25 transition-all text-xl border border-white/20 backdrop-blur-md z-[1010] cursor-pointer"
-          aria-label="Ảnh trước"
-        >
-          <i class="fa-solid fa-chevron-left"></i>
-        </button>
-        <button
-          id="lightbox-next"
-          class="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 size-12 flex items-center justify-center rounded-full bg-white/10 text-white hover:bg-white/25 transition-all text-xl border border-white/20 backdrop-blur-md z-[1010] cursor-pointer"
-          aria-label="Ảnh sau"
-        >
-          <i class="fa-solid fa-chevron-right"></i>
-        </button>
-
-        <div class="relative max-w-5xl max-h-[85vh] w-full flex items-center justify-center select-none">
-          <img
-            id="lightbox-img"
-            src=""
-            alt="Xe du lịch Gia Huy"
-            class="max-w-full max-h-[80vh] object-contain rounded-xl sm:rounded-2xl shadow-2xl border border-white/10 opacity-0 transition-opacity duration-300"
-          />
-        </div>
-      </div>
 
     </div>
   </section>

@@ -9,12 +9,6 @@
   body {
     @apply font-sans bg-slate-50 text-slate-800 antialiased text-[17px] lg:text-[18px] leading-relaxed;
   }
-  .text-xs {
-    font-size: 15.5px !important;
-  }
-  .text-sm {
-    font-size: 17.5px !important;
-  }
 }
 
 /* Glassmorphism custom classes */
