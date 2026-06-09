@@ -10,7 +10,6 @@ const carTabs = [
   {
     id: 'xe-nha-trang-1',
     label: 'Xe Nha Trang',
-    description: 'Dòng xe cỡ lớn cao cấp nhất, khoang xe rộng rãi, giường nằm/bầu hơi: Hyundai Universe, Thaco Universe...',
     cars: [
       { image: '/uploads/photos/thumbs/photos_300x300-72-547957875627f93d2defe0f29fd1d75b.jpg' },
       { image: '/uploads/photos/thumbs/photos_300x300-73-e1e92381f8cdf6119286b6d42b6ac219.jpg' },
@@ -23,7 +22,6 @@ const carTabs = [
   {
     id: 'xe-nha-trang-2',
     label: 'Xe Nha Trang',
-    description: 'Dòng xe tầm trung rộng rãi, thích hợp đi tour liên tỉnh, du lịch dài ngày: Thaco Town, Isuzu Samco...',
     cars: [
       { image: '/uploads/photos/thumbs/photos_300x300-64-0c584f1155c7801b2c3347370c9b569d.jpg' },
       { image: '/uploads/photos/thumbs/photos_300x300-65-26ab11d9799809c18578958803578445.jpg' },
@@ -37,7 +35,6 @@ const carTabs = [
   {
     id: 'xe-gia-huy-1',
     label: 'Xe Gia Huy',
-    description: 'Dòng xe du lịch gia đình nhỏ gọn, đời mới tiện nghi: Toyota Vios, Honda City, Innova, Xpander...',
     cars: [
       { image: '/uploads/photos/thumbs/photos_300x300-45-b2e9a0c8014582f1440804d18cb85a20.jpg' },
       { image: '/uploads/photos/thumbs/photos_300x300-43-456c4b99e0c2a163588362ec5e8bb37c.jpg' },
@@ -51,7 +48,6 @@ const carTabs = [
   {
     id: 'xe-gia-huy-2',
     label: 'Xe Gia Huy',
-    description: 'Dòng xe du lịch 16 chỗ thông dụng nhất cho khách đoàn vừa: Ford Transit, Hyundai Solati êm ái.',
     cars: [
       { image: '/uploads/photos/thumbs/photos_300x300-42-a4da69c764ded6c0d400f5afe77188bb.jpg' },
       { image: '/uploads/photos/thumbs/photos_300x300-41-59949b56fdd3825730bcd9099ec301c4.jpg' },
@@ -316,12 +312,6 @@ const sliderImages = [
             id={tab.id}
             class={`grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-5 lg:gap-6 ${idx === 0 ? '' : 'hidden'}`}
           >
-            <!-- Card items -->
-            <div class="col-span-2 lg:col-span-3 mb-2 sm:mb-4">
-              <p class="text-sm font-semibold text-slate-500 border-l-4 border-brand pl-3">
-                {tab.description}
-              </p>
-            </div>
 
             {tab.cars.map(car => (
               <button
@@ -377,7 +367,7 @@ const sliderImages = [
         >
           <i class="fa-solid fa-xmark"></i>
         </button>
-        
+
         <button
           id="lightbox-prev"
           class="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 size-12 flex items-center justify-center rounded-full bg-white/10 text-white hover:bg-white/25 transition-all text-xl border border-white/20 backdrop-blur-md z-[1010] cursor-pointer"
@@ -809,10 +799,10 @@ const sliderImages = [
   function showLightboxImage(index: number) {
     if (!lightboxImages.length || !lightboxImg) return;
     currentLightboxIdx = (index + lightboxImages.length) % lightboxImages.length;
-    
+
     lightboxImg.classList.remove('opacity-100');
     lightboxImg.classList.add('opacity-0');
-    
+
     setTimeout(() => {
       if (lightboxImg) {
         lightboxImg.src = lightboxImages[currentLightboxIdx];
@@ -830,7 +820,7 @@ const sliderImages = [
     if (idx !== -1) {
       currentLightboxIdx = idx;
     }
-    
+
     lightboxModal?.classList.remove('pointer-events-none', 'opacity-0');
     lightboxModal?.classList.add('opacity-100');
     document.body.style.overflow = 'hidden';
