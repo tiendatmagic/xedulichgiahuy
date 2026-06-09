@@ -8,8 +8,21 @@ const featuredTours = postsData.filter(post => post.category === 'du-lich').slic
 // Car category data mapping to downloaded photos
 const carTabs = [
   {
-    id: 'xe-29',
-    label: 'Xe 29 Chỗ',
+    id: 'xe-nha-trang-1',
+    label: 'Xe Nha Trang',
+    description: 'Dòng xe cỡ lớn cao cấp nhất, khoang xe rộng rãi, giường nằm/bầu hơi: Hyundai Universe, Thaco Universe...',
+    cars: [
+      { image: '/uploads/photos/thumbs/photos_300x300-72-547957875627f93d2defe0f29fd1d75b.jpg' },
+      { image: '/uploads/photos/thumbs/photos_300x300-73-e1e92381f8cdf6119286b6d42b6ac219.jpg' },
+      { image: '/uploads/photos/thumbs/photos_300x300-74-4a2d2dae466973e57dbd89fb8782337b.jpg' },
+      { image: '/uploads/photos/thumbs/photos_300x300-75-a47a0e6d215577ca386e4b9e0137d12b.jpg' },
+      { image: '/uploads/photos/thumbs/photos_300x300-76-48f31ebac6c5629598da39fa60f0b88d.jpg' },
+      { image: '/uploads/photos/thumbs/photos_300x300-77-d3d0dbd2c51c2903c36cacbff375ad4d.jpg' }
+    ]
+  },
+  {
+    id: 'xe-nha-trang-2',
+    label: 'Xe Nha Trang',
     description: 'Dòng xe tầm trung rộng rãi, thích hợp đi tour liên tỉnh, du lịch dài ngày: Thaco Town, Isuzu Samco...',
     cars: [
       { image: '/uploads/photos/thumbs/photos_300x300-64-0c584f1155c7801b2c3347370c9b569d.jpg' },
@@ -22,16 +35,33 @@ const carTabs = [
     ]
   },
   {
-    id: 'xe-35-45',
-    label: 'Xe 35 - 45 Chỗ',
-    description: 'Dòng xe cỡ lớn cao cấp nhất, khoang xe rộng rãi, giường nằm/bầu hơi: Hyundai Universe, Thaco Universe...',
+    id: 'xe-gia-huy-1',
+    label: 'Xe Gia Huy',
+    description: 'Dòng xe du lịch gia đình nhỏ gọn, đời mới tiện nghi: Toyota Vios, Honda City, Innova, Xpander...',
     cars: [
-      { image: '/uploads/photos/thumbs/photos_300x300-72-547957875627f93d2defe0f29fd1d75b.jpg' },
-      { image: '/uploads/photos/thumbs/photos_300x300-73-e1e92381f8cdf6119286b6d42b6ac219.jpg' },
-      { image: '/uploads/photos/thumbs/photos_300x300-74-4a2d2dae466973e57dbd89fb8782337b.jpg' },
-      { image: '/uploads/photos/thumbs/photos_300x300-75-a47a0e6d215577ca386e4b9e0137d12b.jpg' },
-      { image: '/uploads/photos/thumbs/photos_300x300-76-48f31ebac6c5629598da39fa60f0b88d.jpg' },
-      { image: '/uploads/photos/thumbs/photos_300x300-77-d3d0dbd2c51c2903c36cacbff375ad4d.jpg' }
+      { image: '/uploads/photos/thumbs/photos_300x300-45-b2e9a0c8014582f1440804d18cb85a20.jpg' },
+      { image: '/uploads/photos/thumbs/photos_300x300-43-456c4b99e0c2a163588362ec5e8bb37c.jpg' },
+      { image: '/uploads/photos/thumbs/photos_300x300-44-f30da1a7c0bb3ea16269264144efb6b1.jpg' },
+      { image: '/uploads/photos/thumbs/photos_300x300-48-e541980b9be87bde52720294c545811a.jpg' },
+      { image: '/uploads/photos/thumbs/photos_300x300-47-d975a13d13fbf69e21189496edc25480.jpg' },
+      { image: '/uploads/photos/thumbs/photos_300x300-46-b7930e7f6c5eef54437cb25ae365be9b.png' },
+      { image: '/uploads/photos/thumbs/photos_300x300-49-abb51978c78cf2f58323365554b2ba88.jpg' }
+    ]
+  },
+  {
+    id: 'xe-gia-huy-2',
+    label: 'Xe Gia Huy',
+    description: 'Dòng xe du lịch 16 chỗ thông dụng nhất cho khách đoàn vừa: Ford Transit, Hyundai Solati êm ái.',
+    cars: [
+      { image: '/uploads/photos/thumbs/photos_300x300-42-a4da69c764ded6c0d400f5afe77188bb.jpg' },
+      { image: '/uploads/photos/thumbs/photos_300x300-41-59949b56fdd3825730bcd9099ec301c4.jpg' },
+      { image: '/uploads/photos/thumbs/photos_300x300-34-472658c83315e469342b0c760488a6ba.jpg' },
+      { image: '/uploads/photos/thumbs/photos_300x300-35-1628f348053aacb9bfbaa88a58b35ce5.jpg' },
+      { image: '/uploads/photos/thumbs/photos_300x300-36-6fa546343b2342e4f5f4eceb700e8b56.jpg' },
+      { image: '/uploads/photos/thumbs/photos_300x300-37-5df52f9b7a9762ffe2c366e6af660ae4.jpg' },
+      { image: '/uploads/photos/thumbs/photos_300x300-38-da88cd3569a6f80efaad879eb5b54e2d.jpg' },
+      { image: '/uploads/photos/thumbs/photos_300x300-39-5c3f63dd0a6c0ecd2452aa1061e51456.jpg' },
+      { image: '/uploads/photos/thumbs/photos_300x300-40-569e08a5c2d438c24b25dc1d7fb938b2.jpg' }
     ]
   }
 ];
@@ -322,6 +352,16 @@ const sliderImages = [
         ))}
       </div>
 
+      <!-- Xem tất cả Button -->
+      <div class="flex justify-center mt-12">
+        <a
+          href="/news/dich-vu/"
+          class="inline-flex items-center justify-center bg-brand hover:bg-brand-orange hover:scale-105 text-white font-bold px-8 py-3.5 rounded-xl shadow-premium hover:shadow-glow transition-all duration-300 text-base"
+        >
+          XEM TẤT CẢ
+        </a>
+      </div>
+
       <!-- Lightbox Modal -->
       <div
         id="lightbox-modal"
@@ -596,7 +636,7 @@ const sliderImages = [
       });
       btn.classList.add('bg-brand', 'text-white', 'shadow-premium');
       btn.classList.remove('text-slate-600', 'hover:text-brand');
-      ['xe-29', 'xe-35-45'].forEach(id => {
+      ['xe-nha-trang-1', 'xe-nha-trang-2', 'xe-gia-huy-1', 'xe-gia-huy-2'].forEach(id => {
         const panel = document.getElementById(id);
         if (panel) {
           id === targetId ? panel.classList.remove('hidden') : panel.classList.add('hidden');

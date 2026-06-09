@@ -7,13 +7,26 @@ interface Props {
   title?: string;
   description?: string;
   keywords?: string;
+  image?: string;
+  canonical?: string;
+  ogType?: string;
+  twitterCard?: string;
 }
 
 const {
   title = "Cho thuê xe du lịch Nha Trang - Nhà Xe Gia Huy Báo giá mới nhất",
   description = "Cho thuê xe du lịch Nha Trang, Gọi ☎️ 0935.37.3577 ✅ Cam kết giá tốt nhất ⭐chúng tôi có xe ôtô 4,7,16,29,35 đến 45 chỗ ⭐️ phục vụ tất cả các nhu cầu ✅ Đội ngũ lái xe kinh nghiệm, phục vụ tận tình vui vẻ",
   keywords = "xe du lich nha trang, thue xe du lich nha trang, cho thue xe nha trang, thue xe du lich gia huy",
+  image = "/uploads/banners/xe-du-lich-nha-trang.jpg",
+  canonical,
+  ogType = "website",
+  twitterCard = "summary_large_image",
 } = Astro.props;
+
+// Tạo đường dẫn tuyệt đối cho SEO
+const siteUrl = Astro.site?.toString() || "https://xedulichgiahuy.com";
+const canonicalUrl = canonical || new URL(Astro.url.pathname, siteUrl).toString();
+const seoImage = new URL(image, siteUrl).toString();
 ---
 
 <!doctype html>
@@ -29,14 +42,22 @@ const {
     <meta name="description" content={description} />
     <meta name="keywords" content={keywords} />
     <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={canonicalUrl} />
 
     <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:url" content="https://xedulichgiahuy.com/" />
-    <meta property="og:image" content="/uploads/logo.png" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={seoImage} />
     <meta property="og:site_name" content="Xe du lịch Gia Huy Nha Trang" />
+    <meta property="og:locale" content="vi_VN" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content={twitterCard} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={seoImage} />
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
