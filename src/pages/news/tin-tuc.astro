@@ -52,8 +52,8 @@ const categories = [
 
         <!-- Main content list - 8 cols -->
         <div class="lg:col-span-8 space-y-6">
-          {posts.map((post) => (
-            <article class="glass rounded-3xl border border-slate-200/60 p-4 md:p-6 shadow-sm hover:shadow-premium transition-all duration-300 group grid grid-cols-1 sm:grid-cols-12 gap-6 items-center">
+          {posts.map((post, idx) => (
+            <article class={`glass rounded-3xl border border-slate-200/60 p-4 md:p-6 shadow-sm hover:shadow-premium transition-all duration-300 group grid grid-cols-1 sm:grid-cols-12 gap-6 items-center reveal delay-${(idx % 4 + 1) * 100}`}>
 
               <!-- Thumbnail -->
               <a href={`/news/${post.category}/${post.slug}/`} class="sm:col-span-5 rounded-2xl overflow-hidden aspect-[4/3] bg-slate-100 border border-slate-100 block">
@@ -94,7 +94,7 @@ const categories = [
         </div>
 
         <!-- Sidebar - 4 cols -->
-        <aside class="lg:col-span-4 space-y-8">
+        <aside class="lg:col-span-4 space-y-8 reveal-right">
 
           <!-- Category list block -->
           <div class="glass border border-slate-200/60 rounded-3xl p-6 shadow-sm">

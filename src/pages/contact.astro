@@ -34,7 +34,7 @@ import ContactForm from '../components/ContactForm.astro';
       <!-- Contact Info Cards Grid -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
         <!-- Card 1 -->
-        <div class="glass border border-slate-200/60 rounded-3xl p-6 shadow-sm hover:shadow-premium transition-all duration-300 flex items-start gap-4">
+        <div class="glass border border-slate-200/60 rounded-3xl p-6 shadow-sm hover:shadow-premium transition-all duration-300 flex items-start gap-4 reveal delay-100">
           <span class="grid size-12 shrink-0 place-items-center rounded-2xl bg-brand-gradient text-white shadow-glow text-lg">
             <i class="fa-solid fa-location-dot"></i>
           </span>
@@ -45,7 +45,7 @@ import ContactForm from '../components/ContactForm.astro';
         </div>
 
         <!-- Card 2 -->
-        <div class="glass border border-slate-200/60 rounded-3xl p-6 shadow-sm hover:shadow-premium transition-all duration-300 flex items-start gap-4">
+        <div class="glass border border-slate-200/60 rounded-3xl p-6 shadow-sm hover:shadow-premium transition-all duration-300 flex items-start gap-4 reveal delay-200">
           <span class="grid size-12 shrink-0 place-items-center rounded-2xl bg-cyan-500 text-white shadow-lg text-lg">
             <i class="fa-solid fa-phone"></i>
           </span>
@@ -59,7 +59,7 @@ import ContactForm from '../components/ContactForm.astro';
         </div>
 
         <!-- Card 3 -->
-        <div class="glass border border-slate-200/60 rounded-3xl p-6 shadow-sm hover:shadow-premium transition-all duration-300 flex items-start gap-4">
+        <div class="glass border border-slate-200/60 rounded-3xl p-6 shadow-sm hover:shadow-premium transition-all duration-300 flex items-start gap-4 reveal delay-300">
           <span class="grid size-12 shrink-0 place-items-center rounded-2xl bg-emerald-500 text-white shadow-lg text-lg">
             <i class="fa-solid fa-envelope"></i>
           </span>
@@ -74,7 +74,9 @@ import ContactForm from '../components/ContactForm.astro';
       </div>
 
       <!-- Contact Form & Maps Embed Component -->
-      <ContactForm />
+      <div class="reveal delay-400">
+        <ContactForm />
+      </div>
 
     </div>
   </section>

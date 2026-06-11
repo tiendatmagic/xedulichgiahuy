@@ -183,6 +183,28 @@ const seoImage = new URL(image, siteUrl).toString();
           window.scrollTo({ top: 0, behavior: "smooth" });
         });
       }
+
+      // Scroll Reveal Animation cho toàn bộ website
+      const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
+      if (revealElements.length > 0) {
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('active');
+              // Chạy 1 lần duy nhất để tối ưu hiệu năng
+              observer.unobserve(entry.target);
+            }
+          });
+        }, {
+          root: null,
+          threshold: 0.1,
+          rootMargin: '0px 0px -50px 0px'
+        });
+
+        revealElements.forEach(el => {
+          revealObserver.observe(el);
+        });
+      }
     </script>
   </body>
 </html>
