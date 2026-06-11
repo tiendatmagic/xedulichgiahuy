@@ -23,9 +23,9 @@ const categories = [
   description={`Danh mục các tour du lịch hấp dẫn xuất phát từ Nha Trang, kết hợp xe đưa đón đời mới chất lượng cao Gia Huy.`}
 >
   <!-- Page Header Banner -->
-  <section class="relative bg-slate-900 py-16 text-center overflow-hidden">
-    <div class="absolute inset-0 bg-cover bg-center opacity-30" style="background-image: url('/uploads/slider/xe-du-lich-nha-trang_1.jpg')"></div>
-    <div class="absolute inset-0 bg-gradient-to-b from-slate-900/60 to-slate-900/90 z-0"></div>
+  <section class="relative bg-slate-900 py-20 sm:py-28 text-center overflow-hidden">
+    <div class="absolute inset-0 bg-cover bg-center opacity-50" style="background-image: url('/uploads/banners/xe-du-lich-nha-trang.jpg')"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-slate-950/45 via-slate-900/50 to-slate-900/75 z-0"></div>
     <div class="relative z-10 mx-auto max-w-7xl px-4 flex flex-col items-center">
       <h1 class="text-white text-3xl sm:text-5xl font-extrabold tracking-tight">{categoryLabel}</h1>
       <p class="text-slate-300 text-xs sm:text-base max-w-lg mt-3 leading-relaxed">
@@ -35,15 +35,15 @@ const categories = [
   </section>
 
   <!-- Content Section -->
-  <section class="py-12 bg-white relative">
+  <section class="py-16 md:py-24 bg-white relative">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
       <!-- Breadcrumb nav -->
-      <nav class="flex items-center gap-2 text-xs text-slate-400 font-medium mb-8">
+      <nav class="flex items-center gap-2 text-xs sm:text-sm text-slate-400 font-medium mb-8">
         <a href="/" class="hover:text-brand transition-colors"><i class="fa-solid fa-house"></i> Trang chủ</a>
-        <i class="fa-solid fa-chevron-right text-[10px]"></i>
+        <i class="fa-solid fa-chevron-right text-[11px]"></i>
         <a href="/news/tin-tuc/" class="hover:text-brand transition-colors">Tin tức</a>
-        <i class="fa-solid fa-chevron-right text-[10px]"></i>
+        <i class="fa-solid fa-chevron-right text-[11px]"></i>
         <span class="text-slate-600 font-semibold">{categoryLabel}</span>
       </nav>
 
@@ -67,24 +67,24 @@ const categories = [
               <!-- Text Details -->
               <div class="sm:col-span-7 flex flex-col justify-between h-full py-1">
                 <div>
-                  <span class="text-[10px] font-bold text-brand uppercase tracking-wider bg-brand/5 border border-brand/10 px-2.5 py-0.5 rounded-full">
+                  <span class="text-xs font-bold text-brand uppercase tracking-wider bg-brand/5 border border-brand/10 px-2.5 py-0.5 rounded-full">
                     {categoryLabel}
                   </span>
                   <h3 class="text-lg md:text-xl font-extrabold text-slate-900 mt-2 mb-2 hover:text-brand transition-colors">
                     <a href={`/news/${post.category}/${post.slug}/`}>{post.title}</a>
                   </h3>
-                  <p class="text-xs text-slate-500 line-clamp-3 leading-relaxed mb-4">
+                  <p class="text-sm text-slate-600 line-clamp-3 leading-relaxed mb-4">
                     {post.description}
                   </p>
                 </div>
 
-                <div class="flex items-center justify-between text-[11px] text-slate-400 border-t border-slate-100 pt-3 mt-2">
+                <div class="flex items-center justify-between text-xs md:text-sm text-slate-400 border-t border-slate-100 pt-3 mt-2">
                   <div class="flex items-center gap-3">
                     <span><i class="fa-regular fa-clock mr-1"></i> {post.date.split(' ')[0]}</span>
                     <span><i class="fa-regular fa-eye mr-1"></i> Đã xem: {post.views}</span>
                   </div>
                   <a href={`/news/${post.category}/${post.slug}/`} class="font-bold text-brand hover:underline">
-                    Xem chi tiết <i class="fa-solid fa-angle-right text-[9px] ml-0.5"></i>
+                    Xem chi tiết <i class="fa-solid fa-angle-right text-[11px] ml-0.5"></i>
                   </a>
                 </div>
               </div>
@@ -98,14 +98,14 @@ const categories = [
 
           <!-- Category list block -->
           <div class="glass border border-slate-200/60 rounded-3xl p-6 shadow-sm">
-            <h4 class="text-base font-extrabold text-slate-950 pb-3 border-b border-slate-100 mb-4 flex items-center gap-2">
+            <h4 class="text-lg font-extrabold text-slate-950 pb-3 border-b border-slate-100 mb-4 flex items-center gap-2">
               <i class="fa-solid fa-bars text-brand"></i> Danh mục tin tức
             </h4>
             <div class="flex flex-col gap-2">
               {categories.map((cat) => (
                 <a
                   href={cat.path}
-                  class={`flex items-center justify-between px-4 py-3 rounded-xl text-sm font-semibold transition-all duration-300 ${
+                  class={`flex items-center justify-between px-4 py-3 rounded-xl text-base font-bold transition-all duration-300 ${
                     cat.path.includes(category)
                       ? 'bg-brand text-white shadow-premium'
                       : 'text-slate-600 hover:text-brand hover:bg-slate-50'
@@ -120,7 +120,7 @@ const categories = [
 
           <!-- Hot posts list block -->
           <div class="glass border border-slate-200/60 rounded-3xl p-6 shadow-sm">
-            <h4 class="text-base font-extrabold text-slate-950 pb-3 border-b border-slate-100 mb-4 flex items-center gap-2">
+            <h4 class="text-lg font-extrabold text-slate-950 pb-3 border-b border-slate-100 mb-4 flex items-center gap-2">
               <i class="fa-solid fa-fire text-brand-yellow animate-pulse"></i> Xem nhiều nhất
             </h4>
             <div class="flex flex-col gap-4">
@@ -134,10 +134,10 @@ const categories = [
                     />
                   </a>
                   <div>
-                    <h5 class="text-xs font-extrabold text-slate-900 line-clamp-2 leading-snug hover:text-brand transition-colors">
+                    <h5 class="text-sm font-bold text-slate-900 line-clamp-2 leading-snug hover:text-brand transition-colors">
                       <a href={`/news/${post.category}/${post.slug}/`}>{post.title}</a>
                     </h5>
-                    <span class="text-[10px] text-slate-400 mt-1 block"><i class="fa-regular fa-eye mr-0.5"></i> {post.views} lượt xem</span>
+                    <span class="text-xs text-slate-400 mt-1 block"><i class="fa-regular fa-eye mr-0.5"></i> {post.views} lượt xem</span>
                   </div>
                 </div>
               ))}

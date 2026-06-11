@@ -22,8 +22,8 @@ export default {
         'glow': '0 0 20px 0 rgba(20, 87, 255, 0.35)',
       },
       backgroundImage: {
-        'brand-gradient': 'linear-gradient(135deg, #1457FF 0%, #00C2FF 100%)',
-        'brand-glow': 'linear-gradient(135deg, #1457FF 0%, #8B5CF6 100%)',
+        'brand-gradient': 'linear-gradient(135deg, #01478c 0%, #0072ff 100%)',
+        'brand-glow': 'linear-gradient(135deg, #01478c 0%, #00c2ff 100%)',
         'orange-gradient': 'linear-gradient(135deg, #FF5E14 0%, #FFD233 100%)',
       },
     },

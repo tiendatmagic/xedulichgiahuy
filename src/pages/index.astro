@@ -5,22 +5,19 @@ import postsData from '../data/posts.json';
 // Get featured tours (du-lich)
 const featuredTours = postsData.filter(post => post.category === 'du-lich').slice(0, 4);
 
+// Get featured news (tin-tuc)
+const featuredNews = postsData.filter(post => post.category === 'tin-tuc').slice(0, 4);
+
 // Car category data mapping to downloaded photos
 const carTabs = [
   {
-    id: 'xe-nha-trang-1',
+    id: 'xe-nha-trang',
     label: 'Xe Nha Trang',
     cars: [
       { image: '/uploads/photos/thumbs/photos_300x300-74-4a2d2dae466973e57dbd89fb8782337b.jpg' },
       { image: '/uploads/photos/thumbs/photos_300x300-73-e1e92381f8cdf6119286b6d42b6ac219.jpg' },
       { image: '/uploads/photos/thumbs/photos_300x300-72-547957875627f93d2defe0f29fd1d75b.jpg' },
       { image: '/uploads/photos/thumbs/photos_300x300-76-48f31ebac6c5629598da39fa60f0b88d.jpg' },
-    ]
-  },
-  {
-    id: 'xe-nha-trang-2',
-    label: 'Xe Nha Trang',
-    cars: [
       { image: '/uploads/photos/thumbs/photos_300x300-69-516f356e5f7d20204ce31537aa78b16f.jpg' },
       { image: '/uploads/photos/thumbs/photos_300x300-68-94a6d63335e5128afcce23f1ee912d51.jpg' },
       { image: '/uploads/photos/thumbs/photos_300x300-67-4cd485dd3603caa984c7c9206f0fe909.jpg' },
@@ -28,23 +25,17 @@ const carTabs = [
     ]
   },
   {
-    id: 'xe-gia-huy-1',
+    id: 'xe-gia-huy',
     label: 'Xe Gia Huy',
     cars: [
       { image: '/uploads/photos/thumbs/photos_300x300-43-456c4b99e0c2a163588362ec5e8bb37c.jpg' },
       { image: '/uploads/photos/thumbs/photos_300x300-44-f30da1a7c0bb3ea16269264144efb6b1.jpg' },
       { image: '/uploads/photos/thumbs/photos_300x300-48-e541980b9be87bde52720294c545811a.jpg' },
-      { image: '/uploads/photos/thumbs/photos_300x300-47-d975a13d13fbf69e21189496edc25480.jpg' }
-    ]
-  },
-  {
-    id: 'xe-gia-huy-2',
-    label: 'Xe Gia Huy',
-    cars: [
+      { image: '/uploads/photos/thumbs/photos_300x300-47-d975a13d13fbf69e21189496edc25480.jpg' },
       { image: '/uploads/photos/thumbs/photos_300x300-41-59949b56fdd3825730bcd9099ec301c4.jpg' },
       { image: '/uploads/photos/thumbs/photos_300x300-34-472658c83315e469342b0c760488a6ba.jpg' },
       { image: '/uploads/photos/thumbs/photos_300x300-35-1628f348053aacb9bfbaa88a58b35ce5.jpg' },
-      { image: '/uploads/photos/thumbs/photos_300x300-36-6fa546343b2342e4f5f4eceb700e8b56.jpg' },
+      { image: '/uploads/photos/thumbs/photos_300x300-36-6fa546343b2342e4f5f4eceb700e8b56.jpg' }
     ]
   }
 ];
@@ -301,7 +292,7 @@ const sliderImages = [
         {carTabs.map((tab, idx) => (
           <div
             id={tab.id}
-            class={`grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-5 lg:gap-6 ${idx === 0 ? '' : 'hidden'}`}
+            class={`grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-5 lg:gap-6 ${idx === 0 ? '' : 'hidden'}`}
           >
 
             {tab.cars.map(car => (
@@ -349,7 +340,7 @@ const sliderImages = [
   </section>
 
   <!-- Featured Tours / Destination (Du lịch Nha Trang) -->
-  <section id="tin-tuc" class="py-16 md:py-24 bg-[#f1f8ff] relative overflow-hidden scroll-mt-24">
+  <section id="du-lich" class="py-16 md:py-24 bg-[#f1f8ff] relative overflow-hidden scroll-mt-24">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
 
       <div class="flex flex-col md:flex-row items-center justify-between gap-6 mb-12">
@@ -359,7 +350,7 @@ const sliderImages = [
           </span>
           <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight mt-3">Tour Du Lịch Nha Trang</h2>
         </div>
-        <a href="/news/tin-tuc/" class="inline-flex items-center gap-1 text-sm font-bold text-brand hover:underline">
+        <a href="/news/du-lich/" class="inline-flex items-center gap-1 text-sm font-bold text-brand hover:underline">
           Xem tất cả bài viết <i class="fa-solid fa-arrow-right"></i>
         </a>
       </div>
@@ -393,6 +384,129 @@ const sliderImages = [
         ))}
       </div>
 
+    </div>
+  </section>
+
+  <!-- Cẩm nang & Tin tức du lịch Section -->
+  <section id="tin-tuc" class="py-16 md:py-24 bg-white relative overflow-hidden scroll-mt-24 border-t border-slate-100">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
+
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6 mb-12">
+        <div class="block mx-auto text-center md:mx-0 md:text-left">
+          <span class="inline-flex items-center gap-1.5 rounded-full border border-brand/20 bg-brand/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-brand">
+            <i class="fa-solid fa-newspaper"></i> Cẩm nang &amp; Tin tức
+          </span>
+          <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight mt-3">Tin Tức Mới Nhất</h2>
+        </div>
+        <a href="/news/tin-tuc/" class="inline-flex items-center gap-1 text-sm font-bold text-brand hover:underline">
+          Xem tất cả bài viết <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5 lg:gap-6">
+        {featuredNews.map(news => (
+          <article class="bg-white border border-slate-200/60 rounded-2xl sm:rounded-3xl overflow-hidden shadow-sm hover:shadow-premium transition-all duration-300 group flex flex-col justify-between">
+            <a href={`/news/${news.category}/${news.slug}/`} class="block overflow-hidden aspect-[16/10] bg-slate-100 border-b border-slate-100">
+              <img
+                src={news.image}
+                alt={news.title}
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                loading="lazy"
+              />
+            </a>
+            <div class="p-3 sm:p-5 flex-grow flex flex-col justify-between">
+              <div>
+                <span class="text-[9px] sm:text-[10px] font-bold text-brand uppercase tracking-wider bg-brand/5 px-2.5 py-0.5 rounded-full border border-brand/10">Tin tức du lịch</span>
+                <h3 class="text-sm sm:text-[15px] font-extrabold text-slate-950 mt-2 line-clamp-2 hover:text-brand transition-colors leading-snug">
+                  <a href={`/news/${news.category}/${news.slug}/`}>{news.title}</a>
+                </h3>
+                <p class="text-[11px] sm:text-xs text-slate-500 mt-2 line-clamp-2 leading-snug sm:leading-relaxed">
+                  {news.description}
+                </p>
+              </div>
+              <div class="mt-3 sm:mt-5 pt-2 sm:pt-3 border-t border-slate-100 flex items-center justify-between gap-2 text-[10px] sm:text-[11px] text-slate-400">
+                <span><i class="fa-regular fa-clock mr-1"></i> {news.date.split(' ')[0]}</span>
+                <span><i class="fa-regular fa-eye mr-1"></i> {news.views}</span>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FAQ Section (Câu hỏi thường gặp) -->
+  <section id="faq" class="py-16 md:py-24 bg-[#f1f8ff] relative overflow-hidden scroll-mt-24 border-t border-slate-100">
+    <div class="absolute inset-0 z-0 pointer-events-none overflow-hidden opacity-30">
+      <div class="absolute w-[300px] h-[300px] rounded-full bg-brand/5 blur-3xl -left-20 -top-20"></div>
+      <div class="absolute w-[300px] h-[300px] rounded-full bg-brand/5 blur-3xl -right-20 -bottom-20"></div>
+    </div>
+
+    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center max-w-2xl mx-auto mb-12 space-y-4">
+        <span class="inline-flex items-center gap-1.5 rounded-full border border-brand/20 bg-brand/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-brand">
+          <i class="fa-solid fa-circle-question"></i> Giải đáp thắc mắc
+        </span>
+        <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight">Câu Hỏi Thường Gặp</h2>
+        <p class="text-slate-500 text-sm sm:text-base">
+          Những câu hỏi phổ biến và câu trả lời chi tiết về dịch vụ cho thuê xe du lịch của chúng tôi.
+        </p>
+      </div>
+
+      <div class="space-y-4 max-w-3xl mx-auto">
+        <!-- FAQ 1 -->
+        <details class="group bg-white/95 backdrop-blur-md border border-slate-200/60 rounded-3xl overflow-hidden [&_summary::-webkit-details-marker]:hidden transition-all duration-300 shadow-sm hover:shadow-premium hover:border-brand/40">
+          <summary class="flex items-center justify-between p-5 sm:p-6 text-slate-900 font-bold text-sm sm:text-base cursor-pointer select-none group-open:bg-brand/5 transition-colors">
+            <span>Giá thuê xe du lịch tại Gia Huy đã bao gồm những chi phí nào?</span>
+            <span class="transition-transform duration-300 group-open:rotate-180 text-brand">
+              <i class="fa-solid fa-chevron-down"></i>
+            </span>
+          </summary>
+          <div class="px-5 sm:px-6 pb-5 sm:pb-6 pt-4 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100">
+            Giá thuê xe đã bao gồm lương tài xế, xăng dầu, chi phí cầu đường. Giá chưa bao gồm thuế VAT, phí bến bãi đậu xe tại các điểm tham quan và chi phí ăn nghỉ của tài xế nếu đi tour lưu đêm ngoại tỉnh.
+          </div>
+        </details>
+
+        <!-- FAQ 2 -->
+        <details class="group bg-white/95 backdrop-blur-md border border-slate-200/60 rounded-3xl overflow-hidden [&_summary::-webkit-details-marker]:hidden transition-all duration-300 shadow-sm hover:shadow-premium hover:border-brand/40">
+          <summary class="flex items-center justify-between p-5 sm:p-6 text-slate-900 font-bold text-sm sm:text-base cursor-pointer select-none group-open:bg-brand/5 transition-colors">
+            <span>Tôi cần đặt xe trước bao lâu và thủ tục đặt xe như thế nào?</span>
+            <span class="transition-transform duration-300 group-open:rotate-180 text-brand">
+              <i class="fa-solid fa-chevron-down"></i>
+            </span>
+          </summary>
+          <div class="px-5 sm:px-6 pb-5 sm:pb-6 pt-4 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100">
+            Quý khách nên đặt xe trước từ 3 - 5 ngày (hoặc sớm hơn vào các dịp lễ Tết, mùa du lịch cao điểm) để đảm bảo còn xe và chọn được dòng xe ưng ý. Thủ tục rất đơn giản: quý khách chỉ cần liên hệ hotline/Zalo, thống nhất lộ trình và đặt cọc một phần chi phí để xác nhận giữ xe.
+          </div>
+        </details>
+
+        <!-- FAQ 3 -->
+        <details class="group bg-white/95 backdrop-blur-md border border-slate-200/60 rounded-3xl overflow-hidden [&_summary::-webkit-details-marker]:hidden transition-all duration-300 shadow-sm hover:shadow-premium hover:border-brand/40">
+          <summary class="flex items-center justify-between p-5 sm:p-6 text-slate-900 font-bold text-sm sm:text-base cursor-pointer select-none group-open:bg-brand/5 transition-colors">
+            <span>Nhà xe Gia Huy có cung cấp hóa đơn VAT cho công ty không?</span>
+            <span class="transition-transform duration-300 group-open:rotate-180 text-brand">
+              <i class="fa-solid fa-chevron-down"></i>
+            </span>
+          </summary>
+          <div class="px-5 sm:px-6 pb-5 sm:pb-6 pt-4 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100">
+            Có. Nhà xe Gia Huy hỗ trợ xuất hóa đơn tài chính VAT (GTGT) đầy đủ cho các công ty, doanh nghiệp hoặc cơ quan có nhu cầu thanh toán quyết toán chi phí chuyến đi.
+          </div>
+        </details>
+
+        <!-- FAQ 4 -->
+        <details class="group bg-white/95 backdrop-blur-md border border-slate-200/60 rounded-3xl overflow-hidden [&_summary::-webkit-details-marker]:hidden transition-all duration-300 shadow-sm hover:shadow-premium hover:border-brand/40">
+          <summary class="flex items-center justify-between p-5 sm:p-6 text-slate-900 font-bold text-sm sm:text-base cursor-pointer select-none group-open:bg-brand/5 transition-colors">
+            <span>Nếu lịch trình chuyến đi của tôi thay đổi thì chính sách hủy chuyến thế nào?</span>
+            <span class="transition-transform duration-300 group-open:rotate-180 text-brand">
+              <i class="fa-solid fa-chevron-down"></i>
+            </span>
+          </summary>
+          <div class="px-5 sm:px-6 pb-5 sm:pb-6 pt-4 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100">
+            Gia Huy luôn hỗ trợ quý khách thay đổi lịch trình linh hoạt. Quý khách vui lòng báo trước ít nhất 24 - 48 tiếng trước giờ khởi hành để được hỗ trợ dời lịch hoặc hủy chuyến miễn phí.
+          </div>
+        </details>
+      </div>
     </div>
   </section>
 
@@ -616,7 +730,7 @@ const sliderImages = [
       });
       btn.classList.add('bg-brand', 'text-white', 'shadow-premium');
       btn.classList.remove('text-slate-600', 'hover:text-brand');
-      ['xe-nha-trang-1', 'xe-nha-trang-2', 'xe-gia-huy-1', 'xe-gia-huy-2'].forEach(id => {
+      ['xe-nha-trang', 'xe-gia-huy'].forEach(id => {
         const panel = document.getElementById(id);
         if (panel) {
           id === targetId ? panel.classList.remove('hidden') : panel.classList.add('hidden');

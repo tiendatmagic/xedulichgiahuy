@@ -2,21 +2,27 @@
 const pathname = new URL(Astro.request.url).pathname;
 
 const navItems = [
-  { label: "Trang chủ", path: "/#top", id: "top", icon: "fa-house" },
+  { label: "Trang chủ", path: "/", id: "top", icon: "fa-house" },
   {
     label: "Giới thiệu",
-    path: "/#gioi-thieu",
+    path: "/about/",
     id: "gioi-thieu",
     icon: "fa-circle-info",
   },
   {
     label: "Dịch vụ",
-    path: "/#car-rates",
+    path: "/news/dich-vu/",
     id: "car-rates",
     icon: "fa-car-side",
   },
-  { label: "Tin tức", path: "/#tin-tuc", id: "tin-tuc", icon: "fa-newspaper" },
-  { label: "Liên hệ", path: "/#lien-he", id: "lien-he", icon: "fa-headset" },
+  {
+    label: "Du lịch",
+    path: "/news/du-lich/",
+    id: "du-lich",
+    icon: "fa-compass",
+  },
+  { label: "Tin tức", path: "/news/tin-tuc/", id: "tin-tuc", icon: "fa-newspaper" },
+  { label: "Liên hệ", path: "/contact/", id: "lien-he", icon: "fa-headset" },
 ];
 ---
 
@@ -43,31 +49,31 @@ const navItems = [
         <img
           src="/uploads/logo.png"
           alt="Xe du lịch Gia Huy"
-          class="h-5 md:h-6 w-auto object-contain"
+          class="h-8 md:h-11 w-auto object-contain rounded-md"
         />
       </a>
 
       <!-- Nav Middle (Desktop) -->
-      <nav class="hidden xl:flex items-center gap-2 mx-auto">
+      <nav class="hidden xl:flex items-center gap-1 xl:gap-1.5 mx-auto">
         {
           navItems.map((item) => {
-            const isActive = pathname === "/" && item.id === "top";
+            const isActive = pathname === item.path || (item.path !== '/' && pathname.startsWith(item.path));
             return (
               <a
                 href={item.path}
                 data-nav-link={item.id}
-                class={`inline-flex items-center gap-2 rounded-xl px-3.5 xl:px-4 py-2.5 text-base xl:text-[17px] font-bold transition-all duration-300 ${
+                class={`inline-flex items-center gap-1.5 xl:gap-2 rounded-xl px-2.5 xl:px-3.5 py-2 text-[15px] xl:text-base font-bold transition-all duration-300 whitespace-nowrap ${
                   isActive
                     ? "text-white bg-white/20 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.25)]"
                     : "text-white/85 hover:text-white hover:bg-white/10"
                 }`}
               >
                 <span
-                  class={`grid size-8 place-items-center rounded-lg transition-colors ${
+                  class={`grid size-7 xl:size-8 place-items-center rounded-lg transition-colors ${
                     isActive ? "bg-white text-brand" : "bg-white/10 text-white"
                   }`}
                 >
-                  <i class={`fa-solid ${item.icon} text-sm`} />
+                  <i class={`fa-solid ${item.icon} text-xs xl:text-sm`} />
                 </span>
                 <span>{item.label}</span>
               </a>
@@ -81,7 +87,7 @@ const navItems = [
         <!-- Hotline CTA (Desktop) -->
         <a
           href="tel:0935373577"
-          class="hidden md:inline-flex items-center gap-2 bg-white text-brand hover:bg-brand-yellow hover:text-white text-sm font-bold px-5 py-2.5 rounded-xl border border-white hover:border-brand-yellow transition-all duration-300 shadow-md"
+          class="hidden md:inline-flex items-center gap-2 bg-white text-brand hover:bg-brand-yellow hover:text-white text-sm font-bold px-5 py-2.5 rounded-xl border border-white hover:border-brand-yellow transition-all duration-300 shadow-md whitespace-nowrap"
         >
           <i class="fa-solid fa-phone animate-pulse"></i>
           <span>Đặt Xe ngay</span>
@@ -118,7 +124,7 @@ const navItems = [
     <img
       src="/uploads/logo.png"
       alt="Xe du lịch Gia Huy"
-      class="h-6 w-auto object-contain"
+      class="h-10 w-auto object-contain"
     />
     <button
       id="drawer-close-btn"
@@ -132,7 +138,7 @@ const navItems = [
   <nav class="flex flex-col gap-3">
     {
       navItems.map((item) => {
-        const isActive = pathname === "/" && item.id === "top";
+        const isActive = pathname === item.path || (item.path !== '/' && pathname.startsWith(item.path));
         return (
           <a
             href={item.path}
@@ -174,15 +180,6 @@ const navItems = [
   const drawerOverlay = document.getElementById("drawer-overlay");
   const drawerMenu = document.getElementById("drawer-menu");
   const mainHeader = document.getElementById("main-header");
-  const desktopLinks = document.querySelectorAll(
-    "nav.hidden.xl\\:flex [data-nav-link]",
-  );
-  const mobileLinks = document.querySelectorAll("#drawer-menu [data-nav-link]");
-  const allNavLinks = document.querySelectorAll("[data-nav-link]");
-  const isHomePage =
-    window.location.pathname === "/" ||
-    window.location.pathname === "/index.html";
-  const sectionIds = ["top", "gioi-thieu", "car-rates", "tin-tuc", "lien-he"];
 
   function openDrawer() {
     drawerOverlay?.classList.remove("pointer-events-none", "opacity-0");
@@ -207,85 +204,6 @@ const navItems = [
   window.addEventListener("keydown", (event) => {
     if (event.key === "Escape") closeDrawer();
   });
-
-  function setActiveNav(sectionId) {
-    // Desktop Links (Header nền xanh, chữ trắng)
-    desktopLinks.forEach((link) => {
-      const icon = link.querySelector("span");
-      const isActive = link.getAttribute("data-nav-link") === sectionId;
-
-      link.classList.toggle("text-white", isActive);
-      link.classList.toggle("bg-white/20", isActive);
-      link.classList.toggle(
-        "shadow-[inset_0_0_0_1px_rgba(255,255,255,0.25)]",
-        isActive,
-      );
-      link.classList.toggle("text-white/85", !isActive);
-
-      icon?.classList.toggle("bg-white", isActive);
-      icon?.classList.toggle("text-brand", isActive);
-      icon?.classList.toggle("bg-white/10", !isActive);
-      icon?.classList.toggle("text-white", !isActive);
-    });
-
-    // Mobile Links (Drawer nền trắng, chữ xám/xanh)
-    mobileLinks.forEach((link) => {
-      const icon = link.querySelector("span");
-      const isActive = link.getAttribute("data-nav-link") === sectionId;
-
-      link.classList.toggle("text-brand", isActive);
-      link.classList.toggle("bg-brand/5", isActive);
-      link.classList.toggle(
-        "shadow-[inset_0_0_0_1px_rgba(20,87,255,0.1)]",
-        isActive,
-      );
-      link.classList.toggle("text-slate-600", !isActive);
-
-      icon?.classList.toggle("bg-brand", isActive);
-      icon?.classList.toggle("text-white", isActive);
-      icon?.classList.toggle("bg-slate-100", !isActive);
-      icon?.classList.toggle("text-brand", !isActive);
-    });
-  }
-
-  function updateActiveNavFromScroll() {
-    let activeId = sectionIds[0];
-    const offset = 120;
-
-    const isAtBottom =
-      window.innerHeight + window.scrollY >=
-      document.documentElement.scrollHeight - 100;
-
-    if (isAtBottom) {
-      activeId = "lien-he";
-    } else {
-      sectionIds.forEach((id) => {
-        const section = document.getElementById(id);
-        if (section && section.getBoundingClientRect().top <= offset) {
-          activeId = id;
-        }
-      });
-    }
-
-    setActiveNav(activeId);
-  }
-
-  allNavLinks.forEach((link) => {
-    link.addEventListener("click", () => {
-      const sectionId = link.getAttribute("data-nav-link");
-      if (sectionId) setActiveNav(sectionId);
-    });
-  });
-
-  if (isHomePage) {
-    requestAnimationFrame(updateActiveNavFromScroll);
-    window.addEventListener("DOMContentLoaded", updateActiveNavFromScroll);
-    window.addEventListener("load", updateActiveNavFromScroll);
-    window.addEventListener("scroll", updateActiveNavFromScroll, {
-      passive: true,
-    });
-    window.addEventListener("hashchange", updateActiveNavFromScroll);
-  }
 
   // Shrink header on scroll
   window.addEventListener("scroll", () => {
