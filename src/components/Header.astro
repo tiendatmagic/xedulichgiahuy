@@ -44,13 +44,23 @@ const navItems = [
       <!-- Logo Centered on Mobile, Left on Desktop -->
       <a
         href="/"
-        class="flex shrink-0 items-center gap-2 absolute left-1/2 -translate-x-1/2 xl:static xl:translate-x-0 bg-white px-3 py-1.5 rounded-xl shadow-sm border border-white/20 transition-all duration-300 hover:scale-105"
+        class="flex shrink-0 items-center gap-2 sm:gap-2.5 absolute left-1/2 -translate-x-1/2 xl:static xl:translate-x-0 transition-all duration-300 hover:scale-105"
       >
-        <img
-          src="/uploads/logo.png"
-          alt="Xe du lịch Gia Huy"
-          class="h-8 md:h-11 w-auto object-contain rounded-md"
-        />
+        <div class="bg-white px-2 sm:px-2.5 py-1 sm:py-1.5 rounded-xl shadow-sm border border-white/10 flex items-center justify-center">
+          <img
+            src="/uploads/logo.png"
+            alt="Xe du lịch Gia Huy"
+            class="h-7 sm:h-8 md:h-10 w-auto object-contain rounded-md"
+          />
+        </div>
+        <div class="hidden sm:flex flex-col text-left leading-none">
+          <span class="font-black tracking-wider text-[13px] md:text-[14px] lg:text-[15px] xl:text-base uppercase text-white whitespace-nowrap">
+            Xe Du Lịch
+          </span>
+          <span class="font-black tracking-widest text-[10px] md:text-[11px] lg:text-[12px] xl:text-sm uppercase text-brand-yellow mt-0.5 whitespace-nowrap">
+            Gia Huy
+          </span>
+        </div>
       </a>
 
       <!-- Nav Middle (Desktop) -->
@@ -121,11 +131,23 @@ const navItems = [
   <div
     class="flex items-center justify-between border-b border-slate-100 pb-4 mb-6"
   >
-    <img
-      src="/uploads/logo.png"
-      alt="Xe du lịch Gia Huy"
-      class="h-10 w-auto object-contain"
-    />
+    <a href="/" class="flex items-center gap-2 sm:gap-2.5">
+      <div class="bg-slate-50 px-2 py-1 rounded-xl border border-slate-200/60 flex items-center justify-center">
+        <img
+          src="/uploads/logo.png"
+          alt="Xe du lịch Gia Huy"
+          class="h-8 w-auto object-contain rounded-md"
+        />
+      </div>
+      <div class="flex flex-col text-left leading-none">
+        <span class="font-black tracking-wider text-sm uppercase text-slate-900 whitespace-nowrap">
+          Xe Du Lịch
+        </span>
+        <span class="font-black tracking-widest text-[10px] uppercase text-brand mt-0.5 whitespace-nowrap">
+          Gia Huy
+        </span>
+      </div>
+    </a>
     <button
       id="drawer-close-btn"
       class="size-11 flex items-center justify-center text-slate-500 hover:text-brand transition-colors rounded-xl hover:bg-slate-50"
